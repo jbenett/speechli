@@ -1,0 +1,14 @@
+{
+  "main.css": "/speechli/static/css/main.9099c85c.chunk.css",
+  "main.js": "/speechli/static/js/main.eb915a0f.chunk.js",
+  "main.js.map": "/speechli/static/js/main.eb915a0f.chunk.js.map",
+  "static/js/1.fa92c112.chunk.js": "/speechli/static/js/1.fa92c112.chunk.js",
+  "static/js/1.fa92c112.chunk.js.map": "/speechli/static/js/1.fa92c112.chunk.js.map",
+  "runtime~main.js": "/speechli/static/js/runtime~main.22fdb137.js",
+  "runtime~main.js.map": "/speechli/static/js/runtime~main.22fdb137.js.map",
+  "static/media/logo.svg": "/speechli/static/media/logo.5d5d9eef.svg",
+  "static/css/main.9099c85c.chunk.css.map": "/speechli/static/css/main.9099c85c.chunk.css.map",
+  "index.html": "/speechli/index.html",
+  "precache-manifest.90d96fde30f0e4cae944f05e683018ab.js": "/speechli/precache-manifest.90d96fde30f0e4cae944f05e683018ab.js",
+  "service-worker.js": "/speechli/service-worker.js"
+}
