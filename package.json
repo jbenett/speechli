@@ -1,7 +1,7 @@
 {
   "name": "speechli",
   "version": "0.1.0",
-  "homepage": "http://jbenett.github.io/speechli",
+  "homepage": "http://jbenett.github.io/CSE5914",
   "private": true,
   "dependencies": {
     "react": "^16.7.0",
