@@ -1,7 +1,25 @@
-.App {
-  text-align: center;
+.app-header {
+  display: inline-block;
+  background-color: #5CE5C2;
+  width: 100%
 }
 
-.app-header {
-  background-color: #4B734A
+#logo {
+  float: left;
+}
+
+.input-form {
+  margin-top: 2em;
+}
+
+.input-form label {
+  margin-right: 2em;
+}
+
+.footer {
+   position:absolute;
+   bottom:0;
+   width:100%;
+   height:60px;
+   background:#5CE5C2;
 }
