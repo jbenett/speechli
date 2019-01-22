@@ -3,7 +3,7 @@ import DemoInput from './components/DemoInput'
 import DemoResults from './components/DemoResults'
 import Header from './components/Header'
 import Footer from './components/Footer'
-
+import './App.css'
 class App extends Component {
   render() {
     return (
