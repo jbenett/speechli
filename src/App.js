@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import "semantic-ui-css/semantic.min.css";
 import DemoInput from "./components/DemoInput";
 import DemoResults from "./components/DemoResults";
 import DemoHeader from "./components/DemoHeader";
+import Footer from "./components/Footer";
 import { ThemeProvider } from "styled-components";
 import "./App.css";
 
@@ -15,7 +17,7 @@ class App extends Component {
         <div className="App">
           <DemoHeader />
           <Editor />
-          <DemoResults />
+          <Footer />
         </div>
       </ThemeProvider>
     );

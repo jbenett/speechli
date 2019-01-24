@@ -1,1 +1,1 @@
-export { default } from "./editor-wrapper";
+export { default } from "./editor";

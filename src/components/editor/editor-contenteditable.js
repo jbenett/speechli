@@ -29,6 +29,10 @@ const BodyContentEditable = styled(ContentEditable)`
     ${props => props.theme.reset.input}
 `;
 
+const EditorContenteditableWrapper = styled.div`
+    width: 60%;
+`;
+
 export default class EditorContenteditable extends Component {
     state = {
         title: "",
@@ -42,9 +46,10 @@ export default class EditorContenteditable extends Component {
 
     _onChangeBody = e => {
         this.setState({ htmlContent: e.target.value });
-        if (e.target.value[e.target.value.length - 1] === ".") {
-            this._hackyHack();
+        if (e.target.value.indexOf(".") !== -1) {
+            this._hackyHack(e.target.value);
         }
+        console.log(e.target.value);
     };
 
     _onFocusBody = e => {
@@ -69,20 +74,22 @@ export default class EditorContenteditable extends Component {
         return htmlContent;
     };
 
-    _hackyHack = () => {
-        const { htmlContent } = this.state;
-        const [, first, last] = htmlContent.match(/(.*\s)(\w+\s\w+\s\w+)/);
-        const newHtmlContent =
-            first +
-            `<span style="border-radius:3px;padding:5px;background-color:rgba(255,0,0,0.10);border-bottom: 3px solid rgba(255,0,0,0.45);">${last}.</span>`;
-        this.setState({ htmlContent: newHtmlContent });
+    _hackyHack = htmlContent => {
+        const [, front, middle, back] = htmlContent.match(
+            /(.*?)(\w+\s\w+\s\w+\s\w+)\.(.*)/
+        );
+        htmlContent =
+            front +
+            `<span style="border-radius:3px;padding:5px;background-color:rgba(255,0,0,0.10);border-bottom: 3px solid rgba(255,0,0,0.45);">${middle}.</span>` +
+            back;
+        this.setState({ htmlContent });
     };
 
     render() {
         const { title } = this.state;
 
         return (
-            <div>
+            <EditorContenteditableWrapper>
                 <TitleInput
                     name="EditorContenteditable__Title"
                     type="text"
@@ -98,7 +105,7 @@ export default class EditorContenteditable extends Component {
                     onBlur={this._onBlurBody}
                     onChange={this._onChangeBody}
                 />
-            </div>
+            </EditorContenteditableWrapper>
         );
     }
 }
