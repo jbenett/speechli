@@ -1,18 +1,23 @@
-import React, { Component } from 'react';
-import DemoInput from './components/DemoInput'
-import DemoResults from './components/DemoResults'
-import DemoHeader from './components/DemoHeader'
-import Footer from './components/Footer'
-import './App.css'
+import React, { Component } from "react";
+import DemoInput from "./components/DemoInput";
+import DemoResults from "./components/DemoResults";
+import DemoHeader from "./components/DemoHeader";
+import { ThemeProvider } from "styled-components";
+import "./App.css";
+
+import theme from "./constants/theme";
+import Editor from "./components/editor";
+
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <DemoHeader />
-        <DemoInput />
-        <DemoResults />
-        <Footer />
-      </div>
+      <ThemeProvider theme={theme}>
+        <div className="App">
+          <DemoHeader />
+          <Editor />
+          <DemoResults />
+        </div>
+      </ThemeProvider>
     );
   }
 }
