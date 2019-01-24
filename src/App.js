@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "semantic-ui-css/semantic.min.css";
-import DemoInput from "./components/DemoInput";
 import DemoHeader from "./components/DemoHeader";
 import DemoResultSidebar from "./components/DemoResultSidebar";
 import Footer from "./components/Footer";
