@@ -34,6 +34,10 @@ const EditorContenteditableWrapper = styled.div`
 `;
 
 export default class EditorContenteditable extends Component {
+    static propTypes = {
+        toggleSidebar: PropTypes.func.isRequired
+    };
+
     state = {
         title: "",
         htmlContent: "",
@@ -75,14 +79,16 @@ export default class EditorContenteditable extends Component {
     };
 
     _hackyHack = htmlContent => {
+        const { toggleSidebar } = this.props;
         const [, front, middle, back] = htmlContent.match(
-            /(.*?)(\w+\s\w+\s\w+\s\w+)\.(.*)/
+            /(.*?)(\w+\s\w+\s\w+)\.(.*)/
         );
         htmlContent =
             front +
             `<span style="border-radius:3px;padding:5px;background-color:rgba(255,0,0,0.10);border-bottom: 3px solid rgba(255,0,0,0.45);">${middle}.</span>` +
             back;
         this.setState({ htmlContent });
+        toggleSidebar(true);
     };
 
     render() {
