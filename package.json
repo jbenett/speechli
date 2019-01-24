@@ -1,14 +1,16 @@
 {
-  "name": "speechli",
+  "name": "CSE5914",
   "version": "0.1.0",
   "homepage": "http://jbenett.github.io/CSE5914",
-  "private": true,
   "dependencies": {
     "faker": "^4.1.0",
     "react": "^16.7.0",
+    "react-contenteditable": "^3.2.6",
     "react-addons-css-transition-group": "^15.6.2",
     "react-dom": "^16.7.0",
     "react-scripts": "2.1.3",
+    "semantic-ui-react": "^0.84.0",
+    "styled-components": "^4.1.3",
     "semantic-ui-css": "^2.4.1",
     "semantic-ui-react": "^0.84.0"
   },
@@ -23,12 +25,7 @@
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
+  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"],
   "devDependencies": {
     "gh-pages": "^2.0.1"
   }

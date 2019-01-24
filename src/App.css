@@ -1,7 +1,21 @@
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.App {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .app-header {
   display: inline-block;
-  background-color: #5CE5C2;
-  width: 100%
+  background-color: #5ce5c2;
+  width: 100%;
 }
 
 .input-wrapper {
@@ -34,28 +48,29 @@
 }
 
 .footer {
-   position:absolute;
-   bottom:0;
-   width:100%;
-   height:60px;
-   background:#5CE5C2;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  background: #5ce5c2;
 }
 
-.sidebar-container { 
-  position:fixed;
+.sidebar-container {
+  position: fixed;
   margin: 0;
   padding: 0;
-  
+
   top: 10px;
   bottom: 10px;
   right: -420px;
-  
-  width: 400px; 
+
+  width: 400px;
 
   background-color: white;
-  border-radius: 10px;
-  border-left-width: 5px;
-  border-style: groove;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 0px 23px -1px rgba(35, 35, 35, 0.15);
+  -moz-box-shadow: 0px 0px 23px -1px rgba(35, 35, 35, 0.15);
+  box-shadow: 0px 0px 23px -1px rgba(35, 35, 35, 0.15);
 
   -webkit-transition: all 0.25s;
   -moz-transition: all 0.25s;
@@ -66,44 +81,59 @@
   right: 10px;
 }
 
-
 .result-item {
   margin-top: 10px;
   margin-left: 10px;
   margin-right: 10px;
 
   background-color: white;
-  border-radius: 10px;
-  border-left-width: 5px;
-  border-style: groove;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 0px 23px -1px rgba(35, 35, 35, 0.15);
+  -moz-box-shadow: 0px 0px 23px -1px rgba(35, 35, 35, 0.15);
+  box-shadow: 0px 0px 23px -1px rgba(35, 35, 35, 0.15);
 
-  position:relative;
-  padding:10px;
+  position: relative;
+  padding: 10px;
 }
 
 .result-options {
-  position:absolute;
-  top:0px;
-  right:4px;
+  position: absolute;
+  top: 0px;
+  right: 4px;
 }
 
 .result-profile {
-  bottom:10px;
-  right:10px;
-  height: 40px;
-}
-
-
-.profile-image {
-  width:40px;
-  height: 40px;
-  right:0px;
+  bottom: 10px;
+  right: 10px;
+  height: 30px;
+  border-radius: 3px;
+  overflow: hidden;
+  vertical-align: middle;
+  align-items: center;
+  display: inline-flex;
+  justify-content: space-between;
+  border: 1px solid #ededed;
+  background-color: #ededed;
 }
 
 .profile-items {
-  float:right;
+  float: right;
+}
+
+.profile-items--image {
+  width: 30px;
+  height: 30px;
+  right: 0px;
+  object-fit: cover;
+  object-position: center;
+  border-right: 1px solid #ededed;
+}
+
+.profile-items--text {
+  padding: 0 5px;
 }
 
 .strike-through {
   text-decoration: line-through;
+  text-decoration-color: red;
 }
