@@ -12,7 +12,7 @@ class DemoResultSidebar extends Component {
                 }
             >
                 <DemoResultItem
-                    author="Barrak Obama"
+                    author="Barack Obama"
                     quote="my fellow Americans"
                     contextPrefix="Good morning to "
                     original="everyone here today"
