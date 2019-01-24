@@ -23,3 +23,73 @@
    height:60px;
    background:#5CE5C2;
 }
+
+.sidebar-container { 
+  position:fixed;
+  margin: 0;
+  padding: 0;
+  
+  top: 10px;
+  bottom: 10px;
+  right: -420px;
+  
+  width: 400px; 
+
+  background-color: white;
+  border-radius: 10px;
+  border-left-width: 5px;
+  border-style: groove;
+
+  -webkit-transition: all 0.25s;
+  -moz-transition: all 0.25s;
+  transition: all 0.25s;
+}
+
+.sidebar-displayed {
+  right: 10px;
+}
+
+
+.result-item {
+  margin-top: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+  background-color: white;
+  border-radius: 10px;
+  border-left-width: 5px;
+  border-style: groove;
+
+  position:relative;
+}
+
+.result-options {
+  position:absolute;
+  top:2px;
+  right:3px;
+}
+
+.result-profile {
+  bottom:10px;
+  right:10px;
+  padding:10px;
+
+  height: 40px;
+
+  margin:0px;
+}
+
+
+.profile-image {
+  width:40px;
+  height: 40px;
+  right:0px;
+}
+
+.profile-items {
+  float:right;
+}
+
+.strike-through {
+  text-decoration: line-through;
+}
