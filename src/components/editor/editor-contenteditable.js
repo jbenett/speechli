@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ContentEditable from "react-contenteditable";
+import { renderToStaticMarkup } from 'react-dom/server';
 import styled from "styled-components";
 
 const TitleInput = styled.input`
@@ -83,12 +84,23 @@ export default class EditorContenteditable extends Component {
         const [, front, middle, back] = htmlContent.match(
             /(.*?)(\w+\s\w+\s\w+)\.(.*)/
         );
+        const loaderHtml = "<div class=\"loader\"></div>";
         htmlContent =
-            front +
+                front +
+                `<span style="display:inline-flex;align-items:baseline;">` +
+                `<span>${middle}</span>` +
+                loaderHtml +
+                "</span>" +
+                back;
+                
+        this.setState({ htmlContent });
+        setTimeout(() => {
+            htmlContent = front +
             `<span style="border-radius:3px;padding:5px;background-color:rgba(255,0,0,0.10);border-bottom: 3px solid rgba(255,0,0,0.45);">${middle}.</span>` +
             back;
-        this.setState({ htmlContent });
-        toggleSidebar(true);
+            this.setState({ htmlContent });
+            toggleSidebar(true);
+        }, 2000);
     };
 
     render() {
