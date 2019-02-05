@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/jbenett/speechli.svg?branch=master)](https://travis-ci.com/jbenett/speechli)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
