@@ -24,7 +24,7 @@ export default class ContentHandler {
 		this.suggestions = [];
 
 		text.split(".").forEach((sentence) => {
-			var cleanedSentence = sentence.toLowerCase().trim();
+			var cleanedSentence = sentence.trim(); // Got rid of lowercase to be able to perform replace function easier
 			if (cleanedSentence) {
 				this.sentences[cleanedSentence] = oldSentences[cleanedSentence] || this.SentenceState.NEW;
 			}
@@ -37,8 +37,17 @@ export default class ContentHandler {
 		});
 	}
 
+	markAsDone = (sentence) => {
+		if (sentence in this.sentences) {
+			this.sentences[sentence] = this.SentenceState.DONE;
+			this.suggestions = this.suggestions.filter((suggestion) => {
+				return suggestion.source != sentence;
+			});
+		}
+	};
+
 	query = (setStateCallback) => {
-		for (var sentence of Object.keys(this.sentences)) {
+		for (let sentence of Object.keys(this.sentences)) {
 			if (this.sentences[sentence] == this.SentenceState.NEW) {
 				setTimeout(function() {
 					setStateCallback(sentence, [

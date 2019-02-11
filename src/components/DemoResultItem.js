@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const Suggestion = styled.b`
@@ -6,6 +7,17 @@ const Suggestion = styled.b`
 `;
 
 class DemoResultItem extends Component {
+  static propTypes = {
+    author: PropTypes.string,
+    quote: PropTypes.string,
+    contextPrefix: PropTypes.string,
+    original: PropTypes.string,
+    image: PropTypes.string,
+    id: PropTypes.string,
+    removeSuggestion: PropTypes.func.isRequired,
+    takeSuggestion: PropTypes.func.isRequired
+  };
+
   render() {
     return (
       <div className="result-item">
@@ -21,6 +33,7 @@ class DemoResultItem extends Component {
             <Suggestion> {this.props.quote} </Suggestion>{" "}
             {this.props.contextSuffix}"
           </p>
+          <button type="button" onClick={()=>{ this.props.takeSuggestion(this.props.id)}}>Click Me!</button>
           <div className="result-profile">
             <img
               className="profile-items profile-items--image"

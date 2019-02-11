@@ -4,7 +4,6 @@ import DemoHeader from "./components/DemoHeader";
 import DemoResultSidebar from "./components/DemoResultSidebar";
 import Footer from "./components/Footer";
 import { ThemeProvider } from "styled-components";
-import _ from 'lodash';
 import "./App.css";
 
 import theme from "./constants/theme";
@@ -70,6 +69,23 @@ class App extends Component {
     this.setState({ suggestions, displaySidebar: suggestions.length > 0 });
   };
 
+  _takeSuggestion = (id) => {
+    let newText = this.state.text;
+    const suggestion = this.state.suggestions.find((suggestion) => {
+      return suggestion.id == id;
+    });
+    if (suggestion) { 
+      newText = newText.replace(suggestion.source, suggestion.text); // Currently only replaces one occurrence 
+    }
+    var content = new ContentHandler(newText, this.state.sentences, this.state.suggestions);
+    content.markAsDone(suggestion.text);
+    this.setState({ 
+      text: newText,
+      sentences: content.sentences,
+      suggestions: content.suggestions 
+    });
+  };
+
   _onChangeTitle = (newTitle) => {
     this.setState({ title: newTitle });
   };
@@ -98,6 +114,7 @@ class App extends Component {
             displayed={displaySidebar} 
             suggestions={suggestions} 
             removeSuggestion={this._removeSuggestionById}
+            takeSuggestion={this._takeSuggestion}
           />
         </div>
       </ThemeProvider>
