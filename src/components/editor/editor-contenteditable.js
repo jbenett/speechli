@@ -36,75 +36,59 @@ const EditorContenteditableWrapper = styled.div`
 
 export default class EditorContenteditable extends Component {
     static propTypes = {
-        toggleSidebar: PropTypes.func.isRequired
+        setText: PropTypes.func.isRequired,
+        setTitle: PropTypes.func.isRequired,
+        setEditorFocus: PropTypes.func.isRequired,
+        title: PropTypes.string,
+        text: PropTypes.string,
+        editing: PropTypes.bool
     };
 
-    state = {
-        title: "",
-        htmlContent: "",
-        editing: false,
-        editable: true
-    };
+    _placeholderText = 'My amazing text';
 
-    _placeholderHtmlContent =
-        '<span style="color:#757575;">My amazing text</span>';
-
-    _onChangeBody = e => {
-        this.setState({ htmlContent: e.target.value });
-        if (e.target.value.indexOf(".") !== -1) {
-            this._hackyHack(e.target.value);
+    _getText = () => {
+        const { text, editing } = this.props;
+        if (!editing && !text) {
+            return this._placeholderText;
         }
-        console.log(e.target.value);
+        return text;
     };
 
-    _onFocusBody = e => {
-        this.setState({ editing: true });
+    _getHtmlFromText = () => {
+        const text = this._getText();
+        if (text) {
+            return `<span style="color:#757575;">${text}</span>`;
+        } else {
+            return text;
+        }
     };
 
-    _onBlurBody = e => {
-        this.setState({ editing: false });
+    _getTextFromHtml = ( html ) => {
+        if (html.includes("</span>")) {
+            return html.slice(29, -7);
+        } else {
+            return html;
+        }
     };
 
     _onChangeTitle = e => {
-        this.setState({
-            title: e.target.value
-        });
+        this.props.setTitle(e.target.value);
     };
 
-    _getHtmlContent = () => {
-        const { htmlContent, editing } = this.state;
-        if (!editing && !htmlContent) {
-            return this._placeholderHtmlContent;
-        }
-        return htmlContent;
+    _onChangeBody = e => {
+        this.props.setText(this._getTextFromHtml(e.target.value));
     };
 
-    _hackyHack = htmlContent => {
-        const { toggleSidebar } = this.props;
-        const [, front, middle, back] = htmlContent.match(
-            /(.*?)(\w+\s\w+\s\w+)\.(.*)/
-        );
-        const loaderHtml = "<div class=\"loader\"></div>";
-        htmlContent =
-                front +
-                `<span style="display:inline-flex;align-items:baseline;">` +
-                `<span>${middle}</span>` +
-                loaderHtml +
-                "</span>" +
-                back;
-                
-        this.setState({ htmlContent });
-        setTimeout(() => {
-            htmlContent = front +
-            `<span style="border-radius:3px;padding:5px;background-color:rgba(255,0,0,0.10);border-bottom: 3px solid rgba(255,0,0,0.45);">${middle}.</span>` +
-            back;
-            this.setState({ htmlContent });
-            toggleSidebar(true);
-        }, 2000);
+    _onFocusBody = e => {
+        this.props.setEditorFocus(true);
+    };
+
+    _onBlurBody = e => {
+        this.props.setEditorFocus(false);
     };
 
     render() {
-        const { title } = this.state;
+        const { title } = this.props;
 
         return (
             <EditorContenteditableWrapper>
@@ -118,7 +102,7 @@ export default class EditorContenteditable extends Component {
                 <BodyContentEditable
                     className="EditorContenteditable__Body"
                     tagName="pre"
-                    html={this._getHtmlContent()}
+                    html={this._getHtmlFromText()}
                     onFocus={this._onFocusBody}
                     onBlur={this._onBlurBody}
                     onChange={this._onChangeBody}

@@ -1,7 +1,14 @@
 import React, { Component } from "react";
 import DemoResultItem from "./DemoResultItem.js";
+import PropTypes from "prop-types";
 
 class DemoResultSidebar extends Component {
+    static propTypes = {
+        displayed: PropTypes.bool,
+        suggestions: PropTypes.array,
+        removeSuggestion: PropTypes.func.isRequired
+    };
+
     render() {
         return (
             <div
@@ -11,20 +18,17 @@ class DemoResultSidebar extends Component {
                         : "sidebar-container"
                 }
             >
-                <DemoResultItem
-                    author="Barack Obama"
-                    quote="my fellow Americans"
-                    contextPrefix="Good morning to "
-                    original="everyone here today"
+            { this.props.suggestions.map(({ source, text, author, image, id }) => {
+                return <DemoResultItem
+                    author={author}
+                    quote={text}
+                    contextPrefix=""
+                    original={source}
                     image="https://pbs.twimg.com/profile_images/822547732376207360/5g0FC8XX_400x400.jpg"
-                />
-                <DemoResultItem
-                    author="Snoop Dogg"
-                    quote="all my homies"
-                    contextPrefix="Good morning to "
-                    original="everyone here today"
-                    image="https://pbs.twimg.com/profile_images/943933166015803392/jvjasD7v_400x400.jpg"
-                />
+                    id={id}
+                    removeSuggestion={this.props.removeSuggestion}
+                />;
+            })}
             </div>
         );
     }

@@ -61,6 +61,7 @@ body,
   position: absolute;
   top: 0px;
   right: 4px;
+  cursor:pointer;
 }
 
 .result-profile {

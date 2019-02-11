@@ -13,16 +13,11 @@ const EditorWrapper = styled.div`
 `;
 
 export default class Editor extends Component {
-    static propTypes = {
-        toggleSidebar: PropTypes.func.isRequired
-    };
 
     render() {
-        const { toggleSidebar } = this.props;
-
         return (
             <EditorWrapper>
-                <EditorContenteditable toggleSidebar={toggleSidebar} />
+                <EditorContenteditable { ...this.props } />
             </EditorWrapper>
         );
     }

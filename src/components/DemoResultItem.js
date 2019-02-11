@@ -10,7 +10,7 @@ class DemoResultItem extends Component {
     return (
       <div className="result-item">
         <div>
-          <div className="result-options">ⓧ</div>
+          <div className="result-options" onClick={()=>{this.props.removeSuggestion(this.props.id)} }>ⓧ</div>
           <p>
             "{this.props.contextPrefix}{" "}
             <span className="strike-through">{this.props.original}</span>{" "}
