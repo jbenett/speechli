@@ -31,19 +31,21 @@ export default class ContentHandler {
 		});
 
 		oldSuggestions.forEach((suggestion) => {
-			if (suggestion.source && this.sentences[suggestion.source]) {
+			if (this.sentences[suggestion.source]) {
 				this.suggestions.push({ ...suggestion });
 			}
 		});
 	}
 
-	markAsDone = (sentence) => {
+	markSentenceAsDone = (sentence) => {
 		if (sentence in this.sentences) {
 			this.sentences[sentence] = this.SentenceState.DONE;
-			this.suggestions = this.suggestions.filter((suggestion) => {
-				return suggestion.source != sentence;
-			});
+			this.suggestions = this.suggestions.filter((suggestion) => suggestion.source != sentence);
 		}
+	};
+
+	removeSuggestionById = (id) => {
+		this.suggestions = this.suggestions.filter((sug) => sug.id != id);
 	};
 
 	query = (setStateCallback) => {

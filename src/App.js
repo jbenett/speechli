@@ -44,8 +44,10 @@ class App extends Component {
       const now = new Date();
       if (now.getTime() - this.state.debounceTimer.getTime() >= debounceDelay) {
         content.query((sentence, results) => {
+          const updatedSentences = { ...this.state.sentences };
+          updatedSentences[sentence] = content.SentenceState.DONE;
           this.setState({ 
-            sentences: { ...this.state.sentences, sentence: content.SentenceState.DONE },
+            sentences: updatedSentences,
             suggestions: [ ...this.state.suggestions, ...results],
             displaySidebar: true
           });
@@ -54,32 +56,26 @@ class App extends Component {
     }, debounceDelay);
   };
 
-  _removeSuggestionById = (id) => {
-    const suggestions = [];
-    this.state.suggestions.forEach((suggestion) => {
-      if (suggestion.id != id) suggestions.push({ ...suggestion });
+  _removeSuggestion = (id) => {
+    const suggestion = this.state.suggestions.find((sug) => sug.id == id);
+    var content = new ContentHandler(this.state.text, this.state.sentences, this.state.suggestions);
+    content.markSentenceAsDone(suggestion.source);
+    content.removeSuggestionById(id);
+    this.setState({ 
+      suggestions: content.suggestions, 
+      displaySidebar: content.suggestions.length > 0, 
+      highlighted: ''
     });
-    this.setState({ suggestions, displaySidebar: suggestions.length > 0, highlighted: '' });
-  };
-
-  _removeSuggestionBySource = (source) => {
-    const suggestions = [];
-    this.state.suggestions.forEach((suggestion) => {
-      if (suggestion.source != source) suggestions.push({ ...suggestion });
-    });
-    this.setState({ suggestions, displaySidebar: suggestions.length > 0 });
   };
 
   _takeSuggestion = (id) => {
     let newText = this.state.text;
-    const suggestion = this.state.suggestions.find((suggestion) => {
-      return suggestion.id == id;
-    });
+    const suggestion = this.state.suggestions.find((sug) => sug.id == id);
     if (suggestion) { 
       newText = newText.replace(suggestion.source, suggestion.text); // Currently only replaces one occurrence 
     }
     var content = new ContentHandler(newText, this.state.sentences, this.state.suggestions);
-    content.markAsDone(suggestion.text);
+    content.markSentenceAsDone(suggestion.text);
     this.setState({ 
       text: newText,
       sentences: content.sentences,
@@ -119,7 +115,7 @@ class App extends Component {
           <DemoResultSidebar 
             displayed={displaySidebar} 
             suggestions={suggestions} 
-            removeSuggestion={this._removeSuggestionById}
+            removeSuggestion={this._removeSuggestion}
             takeSuggestion={this._takeSuggestion}
             onHoverSuggestion={this._onHoverSuggestion}
           />
