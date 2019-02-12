@@ -14,6 +14,7 @@ class App extends Component {
   state = {
     title: "",
     text: "",
+    highlighted: "",
     sentences: {},
     suggestions: [],
     editing: false,
@@ -58,7 +59,7 @@ class App extends Component {
     this.state.suggestions.forEach((suggestion) => {
       if (suggestion.id != id) suggestions.push({ ...suggestion });
     });
-    this.setState({ suggestions, displaySidebar: suggestions.length > 0 });
+    this.setState({ suggestions, displaySidebar: suggestions.length > 0, highlighted: '' });
   };
 
   _removeSuggestionBySource = (source) => {
@@ -86,6 +87,10 @@ class App extends Component {
     });
   };
 
+  _onHoverSuggestion = ( text='') => {
+    this.setState({ highlighted: text });
+  };
+
   _onChangeTitle = (newTitle) => {
     this.setState({ title: newTitle });
   };
@@ -107,6 +112,7 @@ class App extends Component {
             setEditorFocus={this._onFocusEditor}
             title={title}
             text={text}
+            highlighted={this.state.highlighted}
             editing={editing}
           />
           <Footer />
@@ -115,6 +121,7 @@ class App extends Component {
             suggestions={suggestions} 
             removeSuggestion={this._removeSuggestionById}
             takeSuggestion={this._takeSuggestion}
+            onHoverSuggestion={this._onHoverSuggestion}
           />
         </div>
       </ThemeProvider>

@@ -41,10 +41,16 @@ export default class EditorContenteditable extends Component {
         setEditorFocus: PropTypes.func.isRequired,
         title: PropTypes.string,
         text: PropTypes.string,
+        highlighted: PropTypes.string, 
         editing: PropTypes.bool
     };
 
     _placeholderText = 'My amazing text';
+    _htmlInjections = [
+        '<span style="color:#757575;">',
+        '<span style="background-color: #FFFF00">',
+        '</span>'
+    ];
 
     _getText = () => {
         const { text, editing } = this.props;
@@ -54,9 +60,13 @@ export default class EditorContenteditable extends Component {
         return text;
     };
 
-    _getHtmlFromText = () => {
-        const text = this._getText();
+    _getHtmlFromText = (highlighted="") => {
+        let text = this._getText();
         if (text) {
+            if (highlighted && text.includes(highlighted)) {
+                text = text.replace(highlighted, `<span style="background-color:#FFB3B3">${highlighted}</span>`);
+            }
+            text = text.replace()
             return `<span style="color:#757575;">${text}</span>`;
         } else {
             return text;
@@ -102,7 +112,7 @@ export default class EditorContenteditable extends Component {
                 <BodyContentEditable
                     className="EditorContenteditable__Body"
                     tagName="pre"
-                    html={this._getHtmlFromText()}
+                    html={this._getHtmlFromText(this.props.highlighted)}
                     onFocus={this._onFocusBody}
                     onBlur={this._onBlurBody}
                     onChange={this._onChangeBody}

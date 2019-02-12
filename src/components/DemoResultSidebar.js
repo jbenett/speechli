@@ -7,7 +7,8 @@ class DemoResultSidebar extends Component {
         displayed: PropTypes.bool,
         suggestions: PropTypes.array,
         removeSuggestion: PropTypes.func.isRequired,
-        takeSuggestion: PropTypes.func.isRequired
+        takeSuggestion: PropTypes.func.isRequired,
+        onHoverSuggestion: PropTypes.func.isRequired
     };
 
     render() {
@@ -32,6 +33,7 @@ class DemoResultSidebar extends Component {
                     id={id}
                     removeSuggestion={this.props.removeSuggestion}
                     takeSuggestion={this.props.takeSuggestion}
+                    onHoverSuggestion={this.props.onHoverSuggestion}
                 />;
             })}
             </div>
