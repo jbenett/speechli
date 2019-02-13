@@ -1,0 +1,202 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Header should render correctly 1`] = `
+ShallowWrapper {
+  Symbol(enzyme.__root__): [Circular],
+  Symbol(enzyme.__unrendered__): <DemoHeader />,
+  Symbol(enzyme.__renderer__): Object {
+    "batchedUpdates": [Function],
+    "checkPropTypes": [Function],
+    "getNode": [Function],
+    "render": [Function],
+    "simulateError": [Function],
+    "simulateEvent": [Function],
+    "unmount": [Function],
+  },
+  Symbol(enzyme.__node__): Object {
+    "instance": null,
+    "key": undefined,
+    "nodeType": "host",
+    "props": Object {
+      "children": <ForwardRef
+        id="logo"
+        src="logo.PNG"
+      />,
+    },
+    "ref": null,
+    "rendered": Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "function",
+      "props": Object {
+        "id": "logo",
+        "src": "logo.PNG",
+      },
+      "ref": null,
+      "rendered": null,
+      "type": Object {
+        "$$typeof": Symbol(react.forward_ref),
+        "Group": [Function],
+        "attrs": Array [],
+        "componentStyle": ComponentStyle {
+          "componentId": "sc-bdVaJa",
+          "isStatic": false,
+          "rules": Array [
+            "
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  background-color: white;
+  border-radius: 3px;
+  height: 6rem;
+  width: 6rem;
+  ",
+            [Function],
+            "
+",
+          ],
+        },
+        "create": [Function],
+        "displayName": "Styled(Image)",
+        "foldedComponentIds": Array [],
+        "handledProps": Array [
+          "as",
+          "avatar",
+          "bordered",
+          "centered",
+          "children",
+          "circular",
+          "className",
+          "content",
+          "dimmer",
+          "disabled",
+          "floated",
+          "fluid",
+          "hidden",
+          "href",
+          "inline",
+          "label",
+          "rounded",
+          "size",
+          "spaced",
+          "ui",
+          "verticalAlign",
+          "wrapped",
+        ],
+        "render": [Function],
+        "styledComponentId": "sc-bdVaJa",
+        "target": [Function],
+        "toString": [Function],
+        "warnTooManyClasses": [Function],
+        "withComponent": [Function],
+        Symbol(Symbol.hasInstance): [Function],
+      },
+    },
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": <ForwardRef
+          id="logo"
+          src="logo.PNG"
+        />,
+      },
+      "ref": null,
+      "rendered": Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "id": "logo",
+          "src": "logo.PNG",
+        },
+        "ref": null,
+        "rendered": null,
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "Group": [Function],
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-bdVaJa",
+            "isStatic": false,
+            "rules": Array [
+              "
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  background-color: white;
+  border-radius: 3px;
+  height: 6rem;
+  width: 6rem;
+  ",
+              [Function],
+              "
+",
+            ],
+          },
+          "create": [Function],
+          "displayName": "Styled(Image)",
+          "foldedComponentIds": Array [],
+          "handledProps": Array [
+            "as",
+            "avatar",
+            "bordered",
+            "centered",
+            "children",
+            "circular",
+            "className",
+            "content",
+            "dimmer",
+            "disabled",
+            "floated",
+            "fluid",
+            "hidden",
+            "href",
+            "inline",
+            "label",
+            "rounded",
+            "size",
+            "spaced",
+            "ui",
+            "verticalAlign",
+            "wrapped",
+          ],
+          "render": [Function],
+          "styledComponentId": "sc-bdVaJa",
+          "target": [Function],
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+          Symbol(Symbol.hasInstance): [Function],
+        },
+      },
+      "type": "div",
+    },
+  ],
+  Symbol(enzyme.__options__): Object {
+    "adapter": ReactSixteenAdapter {
+      "options": Object {
+        "enableComponentDidUpdateOnSetState": true,
+        "legacyContextMode": "parent",
+        "lifecycles": Object {
+          "componentDidUpdate": Object {
+            "onSetState": true,
+          },
+          "getChildContext": Object {
+            "calledByRenderer": false,
+          },
+          "getDerivedStateFromProps": true,
+          "getSnapshotBeforeUpdate": true,
+          "setState": Object {
+            "skipsComponentDidUpdateOnNullish": true,
+          },
+        },
+      },
+    },
+  },
+}
+`;
