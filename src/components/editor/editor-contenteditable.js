@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ContentEditable from "react-contenteditable";
-import { renderToStaticMarkup } from 'react-dom/server';
 import styled from "styled-components";
 
 const TitleInput = styled.input`
@@ -42,13 +41,14 @@ export default class EditorContenteditable extends Component {
         title: PropTypes.string,
         text: PropTypes.string,
         highlighted: PropTypes.string, 
-        editing: PropTypes.bool
+        editing: PropTypes.bool,
+        loading: PropTypes.bool
     };
 
     _placeholderText = 'My amazing text';
     _htmlInjections = [
         '<span style="color:#757575;">',
-        '<span style="background-color: #FFFF00">',
+        '<span style="background-color: #FFB3B3">',
         '</span>'
     ];
 

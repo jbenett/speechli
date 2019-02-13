@@ -19,6 +19,7 @@ class App extends Component {
     suggestions: [],
     editing: false,
     displaySidebar: false,
+    displayLoader: false,
     debounceTimer: new Date()
   };
 
@@ -27,8 +28,12 @@ class App extends Component {
     this.setState({ displaySidebar: force !== null ? force : displaySidebar });
   };
 
+  _toggleLoader = (displayLoader = false) => {
+    this.setState({ displayLoader });
+  };
+
   _onChangeText = (newText) => {
-    var content = new ContentHandler(newText, this.state.sentences, this.state.suggestions);
+    const content = new ContentHandler(newText, this.state.sentences, this.state.suggestions);
     this.setState({ 
       debounceTimer: new Date(),
       text: newText,
@@ -43,7 +48,12 @@ class App extends Component {
     setTimeout(() => {
       const now = new Date();
       if (now.getTime() - this.state.debounceTimer.getTime() >= debounceDelay) {
+        this._toggleLoader(true);
         content.query((sentence, results) => {
+          // Currently its possible to query for the same sentence twice if the request takes 
+          // longer to return than the debounce timeout. The following line is a hacky way to 
+          // ignore the repeated suggestions, but does still make the suggestions
+          if (this.state.sentences[sentence] == content.SentenceState.DONE) return;
           const updatedSentences = { ...this.state.sentences };
           updatedSentences[sentence] = content.SentenceState.DONE;
           this.setState({ 
@@ -51,6 +61,7 @@ class App extends Component {
             suggestions: [ ...this.state.suggestions, ...results],
             displaySidebar: true
           });
+          this._toggleLoader(false);
         });
       }
     }, debounceDelay);
@@ -58,7 +69,7 @@ class App extends Component {
 
   _removeSuggestion = (id) => {
     const suggestion = this.state.suggestions.find((sug) => sug.id == id);
-    var content = new ContentHandler(this.state.text, this.state.sentences, this.state.suggestions);
+    const content = new ContentHandler(this.state.text, this.state.sentences, this.state.suggestions);
     content.markSentenceAsDone(suggestion.source);
     content.removeSuggestionById(id);
     this.setState({ 
@@ -74,7 +85,7 @@ class App extends Component {
     if (suggestion) { 
       newText = newText.replace(suggestion.source, suggestion.text); // Currently only replaces one occurrence 
     }
-    var content = new ContentHandler(newText, this.state.sentences, this.state.suggestions);
+    const content = new ContentHandler(newText, this.state.sentences, this.state.suggestions);
     content.markSentenceAsDone(suggestion.text);
     this.setState({ 
       text: newText,
@@ -96,7 +107,7 @@ class App extends Component {
   };
 
   render() {
-    const { title, text, editing, suggestions, displaySidebar } = this.state;
+    const { title, text, editing, suggestions, displaySidebar, displayLoader } = this.state;
 
     return (
       <ThemeProvider theme={theme}>
@@ -114,6 +125,7 @@ class App extends Component {
           <Footer />
           <DemoResultSidebar 
             displayed={displaySidebar} 
+            loading={displayLoader} 
             suggestions={suggestions} 
             removeSuggestion={this._removeSuggestion}
             takeSuggestion={this._takeSuggestion}

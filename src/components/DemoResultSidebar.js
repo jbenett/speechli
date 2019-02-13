@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 class DemoResultSidebar extends Component {
     static propTypes = {
         displayed: PropTypes.bool,
+        loading: PropTypes.bool,
         suggestions: PropTypes.array,
         removeSuggestion: PropTypes.func.isRequired,
         takeSuggestion: PropTypes.func.isRequired,
@@ -12,8 +13,6 @@ class DemoResultSidebar extends Component {
     };
 
     render() {
-        console.log("Recieved to render: ");
-        console.log(this.props.suggestions);
         return (
             <div
                 className={
@@ -22,6 +21,7 @@ class DemoResultSidebar extends Component {
                         : "sidebar-container"
                 }
             >
+            <div className={this.props.loading? "loader hug-sidebar":"hug-sidebar"}></div>
             { this.props.suggestions.map(({ source, text, author, image, id }) => {
                 return <DemoResultItem
                     author={author}
