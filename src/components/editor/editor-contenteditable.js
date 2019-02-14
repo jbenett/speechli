@@ -40,7 +40,7 @@ export default class EditorContenteditable extends Component {
         setEditorFocus: PropTypes.func.isRequired,
         title: PropTypes.string,
         text: PropTypes.string,
-        highlighted: PropTypes.string, 
+        highlighted: PropTypes.string,
         editing: PropTypes.bool,
         loading: PropTypes.bool
     };
@@ -48,7 +48,7 @@ export default class EditorContenteditable extends Component {
     _placeholderText = 'My amazing text';
     _htmlInjections = [
         '<span style="color:#757575;">',
-        '<span style="background-color: #FFB3B3">',
+        '<span style="background-color:#FFB3B3">',
         '</span>'
     ];
 
@@ -66,7 +66,6 @@ export default class EditorContenteditable extends Component {
             if (highlighted && text.includes(highlighted)) {
                 text = text.replace(highlighted, `<span style="background-color:#FFB3B3">${highlighted}</span>`);
             }
-            text = text.replace()
             return `<span style="color:#757575;">${text}</span>`;
         } else {
             return text;
@@ -74,11 +73,12 @@ export default class EditorContenteditable extends Component {
     };
 
     _getTextFromHtml = ( html ) => {
-        if (html.includes("</span>")) {
-            return html.slice(29, -7);
-        } else {
-            return html;
-        }
+        this._htmlInjections.forEach((chunk) => {
+            while(html.includes(chunk)) {
+                html = html.replace(chunk, '');
+            }
+        })
+        return html;
     };
 
     _onChangeTitle = e => {

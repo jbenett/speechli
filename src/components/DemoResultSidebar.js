@@ -22,14 +22,13 @@ class DemoResultSidebar extends Component {
                 }
             >
             <div className={this.props.loading? "loader hug-sidebar":"hug-sidebar"}></div>
-            { this.props.suggestions.map(({ source, text, author, image, id }) => {
+            { this.props.suggestions.map(({ source, text, author, image, id }, index) => {
                 return <DemoResultItem
                     author={author}
                     quote={text}
-                    contextPrefix=""
                     original={source}
                     image="https://pbs.twimg.com/profile_images/822547732376207360/5g0FC8XX_400x400.jpg"
-                    key={id}
+                    key={index}
                     id={id}
                     removeSuggestion={this.props.removeSuggestion}
                     takeSuggestion={this.props.takeSuggestion}

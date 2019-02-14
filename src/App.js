@@ -38,7 +38,8 @@ class App extends Component {
       debounceTimer: new Date(),
       text: newText,
       sentences: content.sentences,
-      suggestions: content.suggestions 
+      suggestions: content.suggestions,
+      displaySidebar: content.suggestions.length > 0
     });
     this._debouncedQuery(content);
   };
@@ -87,10 +88,12 @@ class App extends Component {
     }
     const content = new ContentHandler(newText, this.state.sentences, this.state.suggestions);
     content.markSentenceAsDone(suggestion.text);
+    content.removeSuggestionBySource(suggestion.text);
     this.setState({ 
       text: newText,
       sentences: content.sentences,
-      suggestions: content.suggestions 
+      suggestions: content.suggestions,
+      displaySidebar: content.suggestions.length > 0
     });
   };
 

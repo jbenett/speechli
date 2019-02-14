@@ -42,12 +42,15 @@ export default class ContentHandler {
 	markSentenceAsDone = (sentence) => {
 		if (sentence in this.sentences) {
 			this.sentences[sentence] = this.SentenceState.DONE;
-			this.suggestions = this.suggestions.filter((suggestion) => suggestion.source != sentence);
 		}
 	};
 
 	removeSuggestionById = (id) => {
 		this.suggestions = this.suggestions.filter((sug) => sug.id != id);
+	};
+
+	removeSuggestionBySource = (source) => {
+		this.suggestions = this.suggestions.filter((sug) => sug.source != source);
 	};
 
 	query = (setStateCallback) => {
