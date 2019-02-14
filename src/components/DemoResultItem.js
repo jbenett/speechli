@@ -30,10 +30,10 @@ class DemoResultItem extends Component {
             ⓧ
           </div>
           <p>
-            <span className="strike-through">{this.props.original}</span>{" "}
+            <span className="strike-through">"{this.props.original}"</span>{" "}
           </p>
           <p>
-            <Suggestion> {this.props.quote} </Suggestion>{" "}
+            <Suggestion> "{this.props.quote}" </Suggestion>{" "}
           </p>
           <button type="button" onClick={()=>{ this.props.takeSuggestion(this.props.id)}}>
             Take Suggestion
