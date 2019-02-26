@@ -127,9 +127,16 @@ class App extends Component {
             editing={editing}
           />
           <Footer />
+          <div
+            className={displayLoader ? "loader hug-sidebar" : "hug-sidebar"}
+            style={{
+              top: "calc(-100% + 25px)",
+              right: "calc(-100% + 30px)"
+            }}
+          />
           <ResultSidebar 
             displayed={displaySidebar} 
-            loading={displayLoader} 
+            loading={displayLoader}
             suggestions={suggestions} 
             removeSuggestion={this._removeSuggestion}
             takeSuggestion={this._takeSuggestion}

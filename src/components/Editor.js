@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import ContentEditable from "react-contenteditable";
 import styled from "styled-components";
+import TagButton from "../TagButton";
 
 const EditorWrapper = styled.div`
     flex: 2 0 0;
