@@ -1,14 +1,15 @@
 import React, { Component } from "react";
-import "semantic-ui-css/semantic.min.css";
-import DemoHeader from "./components/DemoHeader";
-import DemoResultSidebar from "./components/DemoResultSidebar";
-import Footer from "./components/Footer";
 import { ThemeProvider } from "styled-components";
-import "./App.css";
+import "semantic-ui-css/semantic.min.css";
 
+import Header from "./components/Header";
+import ResultSidebar from "./components/ResultSidebar";
+import Footer from "./components/Footer";
+import Editor from "./components/Editor";
+
+import "./App.css";
 import theme from "./constants/theme";
-import Editor from "./components/editor";
-import ContentHandler from './contentHandler'
+import ContentHandler from './ContentHandler'
 
 class App extends Component {
   state = {
@@ -115,7 +116,7 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
         <div className="App">
-          <DemoHeader />
+          <Header />
           <Editor 
             setText={this._onChangeText}
             setTitle={this._onChangeTitle}
@@ -126,7 +127,7 @@ class App extends Component {
             editing={editing}
           />
           <Footer />
-          <DemoResultSidebar 
+          <ResultSidebar 
             displayed={displaySidebar} 
             loading={displayLoader} 
             suggestions={suggestions} 

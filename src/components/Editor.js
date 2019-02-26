@@ -3,6 +3,14 @@ import PropTypes from "prop-types";
 import ContentEditable from "react-contenteditable";
 import styled from "styled-components";
 
+const EditorWrapper = styled.div`
+    flex: 2 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+`;
+
 const TitleInput = styled.input`
     font-family: ${props => props.theme.fontFamily};
     color: ${props => props.theme.fontColor.regular};
@@ -33,7 +41,7 @@ const EditorContenteditableWrapper = styled.div`
     width: 60%;
 `;
 
-export default class EditorContenteditable extends Component {
+export default class Editor extends Component {
     static propTypes = {
         setText: PropTypes.func.isRequired,
         setTitle: PropTypes.func.isRequired,
@@ -101,23 +109,25 @@ export default class EditorContenteditable extends Component {
         const { title } = this.props;
 
         return (
-            <EditorContenteditableWrapper>
-                <TitleInput
-                    name="EditorContenteditable__Title"
-                    type="text"
-                    value={title}
-                    onChange={this._onChangeTitle}
-                    placeholder="My Lovely Title"
-                />
-                <BodyContentEditable
-                    className="EditorContenteditable__Body"
-                    tagName="pre"
-                    html={this._getHtmlFromText(this.props.highlighted)}
-                    onFocus={this._onFocusBody}
-                    onBlur={this._onBlurBody}
-                    onChange={this._onChangeBody}
-                />
-            </EditorContenteditableWrapper>
+            <EditorWrapper>
+                <EditorContenteditableWrapper>
+                    <TitleInput
+                        name="EditorContenteditable__Title"
+                        type="text"
+                        value={title}
+                        onChange={this._onChangeTitle}
+                        placeholder="My Lovely Title"
+                    />
+                    <BodyContentEditable
+                        className="EditorContenteditable__Body"
+                        tagName="pre"
+                        html={this._getHtmlFromText(this.props.highlighted)}
+                        onFocus={this._onFocusBody}
+                        onBlur={this._onBlurBody}
+                        onChange={this._onChangeBody}
+                    />
+                </EditorContenteditableWrapper>
+            </EditorWrapper>
         );
     }
 }

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DemoResultItem from "./DemoResultItem.js";
+import ResultItem from "./ResultItem.js";
 import PropTypes from "prop-types";
 
 class DemoResultSidebar extends Component {
@@ -23,7 +23,7 @@ class DemoResultSidebar extends Component {
             >
             <div className={this.props.loading? "loader hug-sidebar":"hug-sidebar"}></div>
             { this.props.suggestions.map(({ source, text, author, image, id }, index) => {
-                return <DemoResultItem
+                return <ResultItem
                     author={author}
                     quote={text}
                     original={source}
