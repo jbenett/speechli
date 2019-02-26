@@ -6,7 +6,7 @@ const Suggestion = styled.b`
   color: ${props => props.theme.primary};
 `;
 
-class DemoResultItem extends Component {
+export default class ResultItem extends Component {
   static propTypes = {
     author: PropTypes.string,
     quote: PropTypes.string,
@@ -52,5 +52,3 @@ class DemoResultItem extends Component {
     );
   }
 }
-
-export default DemoResultItem;

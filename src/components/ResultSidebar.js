@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import DemoResultItem from "./DemoResultItem.js";
+import ResultItem from "./ResultItem.js";
 import PropTypes from "prop-types";
 
-class DemoResultSidebar extends Component {
+export default class ResultSidebar extends Component {
     static propTypes = {
         displayed: PropTypes.bool,
         loading: PropTypes.bool,
@@ -22,7 +22,7 @@ class DemoResultSidebar extends Component {
                 }
             >
             { this.props.suggestions.map(({ source, text, author, image, id }, index) => {
-                return <DemoResultItem
+                return <ResultItem
                     author={author}
                     quote={text}
                     original={source}
@@ -38,5 +38,3 @@ class DemoResultSidebar extends Component {
         );
     }
 }
-
-export default DemoResultSidebar;
