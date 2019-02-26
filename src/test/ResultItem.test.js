@@ -1,13 +1,13 @@
 import React from 'react';
 import { shallow } from 'enzyme';
-import DemoResultItem from '../components/DemoResultItem.js'
+import ResultItem from '../components/ResultItem.js'
 
 const myMock = jest.fn();
 const clickMock =jest.fn();
 
-describe('Demo Result Item', () => {
+describe('Result Item', () => {
   it('should render correctly', () => {
-    const component = shallow(<DemoResultItem
+    const component = shallow(<ResultItem
       author="author"
       quote="text"
       contextPrefix=""
@@ -22,7 +22,7 @@ describe('Demo Result Item', () => {
   expect(component).toMatchSnapshot();
   });
   it('should close when the button is clicked', () => {
-    const component = shallow(<DemoResultItem
+    const component = shallow(<ResultItem
       author="author"
       quote="text"
       contextPrefix=""

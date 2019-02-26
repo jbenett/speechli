@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ResultItem from "./ResultItem.js";
 import PropTypes from "prop-types";
 
-class DemoResultSidebar extends Component {
+export default class ResultSidebar extends Component {
     static propTypes = {
         displayed: PropTypes.bool,
         loading: PropTypes.bool,
@@ -39,5 +39,3 @@ class DemoResultSidebar extends Component {
         );
     }
 }
-
-export default DemoResultSidebar;

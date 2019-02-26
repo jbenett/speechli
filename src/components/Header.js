@@ -13,7 +13,7 @@ const LogoImage = styled(Image)`
   ${props => props.theme.dropShadow.subtle}
 `;
 
-class DemoHeader extends Component {
+export default class CustomHeader extends Component {
   render() {
     return (
       <div>
@@ -22,5 +22,3 @@ class DemoHeader extends Component {
     );
   }
 }
-
-export default DemoHeader;
