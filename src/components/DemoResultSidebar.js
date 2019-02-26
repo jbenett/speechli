@@ -21,7 +21,6 @@ class DemoResultSidebar extends Component {
                         : "sidebar-container"
                 }
             >
-            <div className={this.props.loading? "loader hug-sidebar":"hug-sidebar"}></div>
             { this.props.suggestions.map(({ source, text, author, image, id }, index) => {
                 return <DemoResultItem
                     author={author}
