@@ -8,8 +8,8 @@ export default class ContentHandler {
 	// 	suggestions: [
 	// 		{
 	// 			id: string,
-	// 			source: string, 
-	// 			text: string, 
+	// 			source: string,
+	// 			text: string,
 	// 			author: string,
 	// 			image: url
 	// 		}
@@ -56,11 +56,11 @@ export default class ContentHandler {
 	query = (setStateCallback) => {
 		for (let sentence of Object.keys(this.sentences)) {
 			if (this.sentences[sentence] == this.SentenceState.NEW) {
-				const url='http://127.0.0.1:5000/discovery/suggest/'; // TODO this'll need to change 
+				const url='http://127.0.0.1:5000/discovery/suggest/'; // TODO this'll need to change
 				axios.post(url, { sentence }).then(function (response) {
 					setStateCallback(sentence, response.data.map((sug) => {
 							return {
-								id: Math.random().toString(36).substring(2), 
+								id: Math.random().toString(36).substring(2),
 								source: sentence,
 								text: sug.text,
 								author: sug.author || 'anonymous',
@@ -72,7 +72,7 @@ export default class ContentHandler {
 					console.log(error);
 					setStateCallback(sentence, [
 						{
-							id: Math.random().toString(36).substring(2), 
+							id: Math.random().toString(36).substring(2),
 							source: sentence,
 							text: "placeholder text since the query didnt work",
 							author: "anonymous",
