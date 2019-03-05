@@ -108,6 +108,7 @@ body,
   background-color: rgba(255, 71, 65, 0.15);
   border-bottom: 2px solid #ff4741;
   padding: 5px;
+  display: inline-block;
 }
 
 .result-item__replacing {
@@ -115,17 +116,7 @@ body,
   background-color: rgba(92, 229, 194, 0.15);
   border-bottom: 2px solid #5ce5c2;
   padding: 5px;
-}
-
-.result-item__take {
-  padding: 0.5rem 1rem;
-  text-align: center;
-  border-radius: 5px;
-  background-color: #ededed;
-  opacity: 1;
-  transition: 100ms all;
-  display: inline-flex;
-  border: none;
+  display: inline-block;
 }
 
 .result-item__take:hover {

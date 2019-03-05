@@ -35,7 +35,7 @@ const ButtonWrapper = styled.div`
 
 export default class TagButton extends Component {
     static propTypes = {
-        active: PropTypes.boolean,
+        active: PropTypes.bool,
         emoji: PropTypes.string.isRequired,
         text: PropTypes.string.isRequired
     }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components";
+import Button from "./Button";
 
 export default class ResultItem extends Component {
   static propTypes = {
@@ -25,15 +25,11 @@ export default class ResultItem extends Component {
           <div className="result-options" onClick={()=>{this.props.removeSuggestion(this.props.id)} }>
             ✖️
           </div>
-          <p>
-            <span className="result-item__replacement">{this.props.original}</span><span>&nbsp;➡️</span>
-          </p>
-          <p>
-            <span className="result-item__replacing">{this.props.quote}</span>
-          </p>
-          <button type="button" onClick={()=>{ this.props.takeSuggestion(this.props.id)}} className="result-item__take">
+            <p className="result-item__replacement">{this.props.original}</p><span>&nbsp;➡️</span>
+            <p className="result-item__replacing">{this.props.quote}</p>
+          <Button onClick={()=>{ this.props.takeSuggestion(this.props.id)}}>
             Take Suggestion
-          </button>
+          </Button>
           <div className="result-profile">
             <img
               className="profile-items profile-items--image"
