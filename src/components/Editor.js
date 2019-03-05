@@ -73,7 +73,7 @@ export default class Editor extends Component {
         let text = this._getText();
         if (text) {
             if (highlighted && text.includes(highlighted)) {
-                text = text.replace(highlighted, `<span style="background-color:#FFB3B3">${highlighted}</span>`);
+                text = text.replace(highlighted, `<span class="highlighted-text">${highlighted}</span>`);
             }
             return `<span style="color:#757575;">${text}</span>`;
         } else {

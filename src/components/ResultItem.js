@@ -2,10 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 import styled from "styled-components";
 
-const Suggestion = styled.b`
-  color: ${props => props.theme.primary};
-`;
-
 export default class ResultItem extends Component {
   static propTypes = {
     author: PropTypes.string,
@@ -27,15 +23,15 @@ export default class ResultItem extends Component {
       >
         <div>
           <div className="result-options" onClick={()=>{this.props.removeSuggestion(this.props.id)} }>
-            ⓧ
+            ✖️
           </div>
           <p>
-            <span className="strike-through">"{this.props.original}"</span>{" "}
+            <span className="result-item__replacement">{this.props.original}</span><span>&nbsp;➡️</span>
           </p>
           <p>
-            <Suggestion> "{this.props.quote}" </Suggestion>{" "}
+            <span className="result-item__replacing">{this.props.quote}</span>
           </p>
-          <button type="button" onClick={()=>{ this.props.takeSuggestion(this.props.id)}}>
+          <button type="button" onClick={()=>{ this.props.takeSuggestion(this.props.id)}} className="result-item__take">
             Take Suggestion
           </button>
           <div className="result-profile">

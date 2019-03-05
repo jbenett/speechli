@@ -1,6 +1,7 @@
 const theme = Object.freeze({
     fontFamily: "'Muli', sans-serif",
     primary: "#5ce5c2",
+    danger: "#FF4741",
     fontColor: {
         regular: "#232323",
         regularPlaceholder: "#757575"
