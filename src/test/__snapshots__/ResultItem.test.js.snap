@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Demo Result Item should render correctly 1`] = `
+exports[`Result Item should render correctly 1`] = `
 ShallowWrapper {
   Symbol(enzyme.__root__): [Circular],
-  Symbol(enzyme.__unrendered__): <DemoResultItem
+  Symbol(enzyme.__unrendered__): <ResultItem
     author="author"
     contextPrefix=""
     id="id"
@@ -33,38 +33,26 @@ ShallowWrapper {
           className="result-options"
           onClick={[Function]}
         >
-          ⓧ
+          ✖️
         </div>
-        <p>
-          "
-          
-           
-          <span
-            className="strike-through"
-          >
-            source
-          </span>
-           
-          "
+        <p
+          className="result-item__replacement"
+        >
+          source
         </p>
-        <p>
-          "
-          
-           
-          <ForwardRef>
-             
-            text
-             
-          </ForwardRef>
-           
-          "
+        <span>
+           ➡️
+        </span>
+        <p
+          className="result-item__replacing"
+        >
+          text
         </p>
-        <button
+        <ForwardRef
           onClick={[Function]}
-          type="button"
         >
           Take Suggestion
-        </button>
+        </ForwardRef>
         <div
           className="result-profile"
         >
@@ -94,38 +82,26 @@ ShallowWrapper {
             className="result-options"
             onClick={[Function]}
           >
-            ⓧ
+            ✖️
           </div>,
-          <p>
-            "
-            
-             
-            <span
-              className="strike-through"
-            >
-              source
-            </span>
-             
-            "
+          <p
+            className="result-item__replacement"
+          >
+            source
           </p>,
-          <p>
-            "
-            
-             
-            <ForwardRef>
-               
-              text
-               
-            </ForwardRef>
-             
-            "
+          <span>
+             ➡️
+          </span>,
+          <p
+            className="result-item__replacing"
+          >
+            text
           </p>,
-          <button
+          <ForwardRef
             onClick={[Function]}
-            type="button"
           >
             Take Suggestion
-          </button>,
+          </ForwardRef>,
           <div
             className="result-profile"
           >
@@ -148,12 +124,12 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": "ⓧ",
+            "children": "✖️",
             "className": "result-options",
             "onClick": [Function],
           },
           "ref": null,
-          "rendered": "ⓧ",
+          "rendered": "✖️",
           "type": "div",
         },
         Object {
@@ -161,41 +137,11 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": Array [
-              "\\"",
-              "",
-              " ",
-              <span
-                className="strike-through"
-              >
-                source
-              </span>,
-              " ",
-              undefined,
-              "\\"",
-            ],
+            "children": "source",
+            "className": "result-item__replacement",
           },
           "ref": null,
-          "rendered": Array [
-            "\\"",
-            "",
-            " ",
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "host",
-              "props": Object {
-                "children": "source",
-                "className": "strike-through",
-              },
-              "ref": null,
-              "rendered": "source",
-              "type": "span",
-            },
-            " ",
-            undefined,
-            "\\"",
-          ],
+          "rendered": "source",
           "type": "p",
         },
         Object {
@@ -203,84 +149,77 @@ ShallowWrapper {
           "key": undefined,
           "nodeType": "host",
           "props": Object {
-            "children": Array [
-              "\\"",
-              "",
-              " ",
-              <ForwardRef>
-                 
-                text
-                 
-              </ForwardRef>,
-              " ",
-              undefined,
-              "\\"",
-            ],
+            "children": " ➡️",
           },
           "ref": null,
-          "rendered": Array [
-            "\\"",
-            "",
-            " ",
-            Object {
-              "instance": null,
-              "key": undefined,
-              "nodeType": "function",
-              "props": Object {
-                "children": Array [
-                  " ",
-                  "text",
-                  " ",
-                ],
-              },
-              "ref": null,
-              "rendered": Array [
-                " ",
-                "text",
-                " ",
-              ],
-              "type": Object {
-                "$$typeof": Symbol(react.forward_ref),
-                "attrs": Array [],
-                "componentStyle": ComponentStyle {
-                  "componentId": "sc-bdVaJa",
-                  "isStatic": false,
-                  "rules": Array [
-                    "
-  color: ",
-                    [Function],
-                    ";
-",
-                  ],
-                },
-                "displayName": "styled.b",
-                "foldedComponentIds": Array [],
-                "render": [Function],
-                "styledComponentId": "sc-bdVaJa",
-                "target": "b",
-                "toString": [Function],
-                "warnTooManyClasses": [Function],
-                "withComponent": [Function],
-              },
-            },
-            " ",
-            undefined,
-            "\\"",
-          ],
-          "type": "p",
+          "rendered": " ➡️",
+          "type": "span",
         },
         Object {
           "instance": null,
           "key": undefined,
           "nodeType": "host",
+          "props": Object {
+            "children": "text",
+            "className": "result-item__replacing",
+          },
+          "ref": null,
+          "rendered": "text",
+          "type": "p",
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
           "props": Object {
             "children": "Take Suggestion",
             "onClick": [Function],
-            "type": "button",
           },
           "ref": null,
           "rendered": "Take Suggestion",
-          "type": "button",
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-bdVaJa",
+              "isStatic": false,
+              "rules": Array [
+                "
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    background-color: white;
+    border-radius: 3px;
+    font-family: ",
+                [Function],
+                ";
+    font-weight: bold;
+    transition: 150ms all;
+    ",
+                [Function],
+                "
+
+    &:hover {
+        cursor: pointer;
+        color: white;
+        background-color: ",
+                [Function],
+                ";
+        ",
+                [Function],
+                "
+    }
+",
+              ],
+            },
+            "displayName": "styled.div",
+            "foldedComponentIds": Array [],
+            "render": [Function],
+            "styledComponentId": "sc-bdVaJa",
+            "target": "div",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
         },
         Object {
           "instance": null,
@@ -345,38 +284,26 @@ ShallowWrapper {
             className="result-options"
             onClick={[Function]}
           >
-            ⓧ
+            ✖️
           </div>
-          <p>
-            "
-            
-             
-            <span
-              className="strike-through"
-            >
-              source
-            </span>
-             
-            "
+          <p
+            className="result-item__replacement"
+          >
+            source
           </p>
-          <p>
-            "
-            
-             
-            <ForwardRef>
-               
-              text
-               
-            </ForwardRef>
-             
-            "
+          <span>
+             ➡️
+          </span>
+          <p
+            className="result-item__replacing"
+          >
+            text
           </p>
-          <button
+          <ForwardRef
             onClick={[Function]}
-            type="button"
           >
             Take Suggestion
-          </button>
+          </ForwardRef>
           <div
             className="result-profile"
           >
@@ -406,38 +333,26 @@ ShallowWrapper {
               className="result-options"
               onClick={[Function]}
             >
-              ⓧ
+              ✖️
             </div>,
-            <p>
-              "
-              
-               
-              <span
-                className="strike-through"
-              >
-                source
-              </span>
-               
-              "
+            <p
+              className="result-item__replacement"
+            >
+              source
             </p>,
-            <p>
-              "
-              
-               
-              <ForwardRef>
-                 
-                text
-                 
-              </ForwardRef>
-               
-              "
+            <span>
+               ➡️
+            </span>,
+            <p
+              className="result-item__replacing"
+            >
+              text
             </p>,
-            <button
+            <ForwardRef
               onClick={[Function]}
-              type="button"
             >
               Take Suggestion
-            </button>,
+            </ForwardRef>,
             <div
               className="result-profile"
             >
@@ -460,12 +375,12 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": "ⓧ",
+              "children": "✖️",
               "className": "result-options",
               "onClick": [Function],
             },
             "ref": null,
-            "rendered": "ⓧ",
+            "rendered": "✖️",
             "type": "div",
           },
           Object {
@@ -473,41 +388,11 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": Array [
-                "\\"",
-                "",
-                " ",
-                <span
-                  className="strike-through"
-                >
-                  source
-                </span>,
-                " ",
-                undefined,
-                "\\"",
-              ],
+              "children": "source",
+              "className": "result-item__replacement",
             },
             "ref": null,
-            "rendered": Array [
-              "\\"",
-              "",
-              " ",
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "host",
-                "props": Object {
-                  "children": "source",
-                  "className": "strike-through",
-                },
-                "ref": null,
-                "rendered": "source",
-                "type": "span",
-              },
-              " ",
-              undefined,
-              "\\"",
-            ],
+            "rendered": "source",
             "type": "p",
           },
           Object {
@@ -515,84 +400,77 @@ ShallowWrapper {
             "key": undefined,
             "nodeType": "host",
             "props": Object {
-              "children": Array [
-                "\\"",
-                "",
-                " ",
-                <ForwardRef>
-                   
-                  text
-                   
-                </ForwardRef>,
-                " ",
-                undefined,
-                "\\"",
-              ],
+              "children": " ➡️",
             },
             "ref": null,
-            "rendered": Array [
-              "\\"",
-              "",
-              " ",
-              Object {
-                "instance": null,
-                "key": undefined,
-                "nodeType": "function",
-                "props": Object {
-                  "children": Array [
-                    " ",
-                    "text",
-                    " ",
-                  ],
-                },
-                "ref": null,
-                "rendered": Array [
-                  " ",
-                  "text",
-                  " ",
-                ],
-                "type": Object {
-                  "$$typeof": Symbol(react.forward_ref),
-                  "attrs": Array [],
-                  "componentStyle": ComponentStyle {
-                    "componentId": "sc-bdVaJa",
-                    "isStatic": false,
-                    "rules": Array [
-                      "
-  color: ",
-                      [Function],
-                      ";
-",
-                    ],
-                  },
-                  "displayName": "styled.b",
-                  "foldedComponentIds": Array [],
-                  "render": [Function],
-                  "styledComponentId": "sc-bdVaJa",
-                  "target": "b",
-                  "toString": [Function],
-                  "warnTooManyClasses": [Function],
-                  "withComponent": [Function],
-                },
-              },
-              " ",
-              undefined,
-              "\\"",
-            ],
-            "type": "p",
+            "rendered": " ➡️",
+            "type": "span",
           },
           Object {
             "instance": null,
             "key": undefined,
             "nodeType": "host",
+            "props": Object {
+              "children": "text",
+              "className": "result-item__replacing",
+            },
+            "ref": null,
+            "rendered": "text",
+            "type": "p",
+          },
+          Object {
+            "instance": null,
+            "key": undefined,
+            "nodeType": "function",
             "props": Object {
               "children": "Take Suggestion",
               "onClick": [Function],
-              "type": "button",
             },
             "ref": null,
             "rendered": "Take Suggestion",
-            "type": "button",
+            "type": Object {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": Array [],
+              "componentStyle": ComponentStyle {
+                "componentId": "sc-bdVaJa",
+                "isStatic": false,
+                "rules": Array [
+                  "
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    background-color: white;
+    border-radius: 3px;
+    font-family: ",
+                  [Function],
+                  ";
+    font-weight: bold;
+    transition: 150ms all;
+    ",
+                  [Function],
+                  "
+
+    &:hover {
+        cursor: pointer;
+        color: white;
+        background-color: ",
+                  [Function],
+                  ";
+        ",
+                  [Function],
+                  "
+    }
+",
+                ],
+              },
+              "displayName": "styled.div",
+              "foldedComponentIds": Array [],
+              "render": [Function],
+              "styledComponentId": "sc-bdVaJa",
+              "target": "div",
+              "toString": [Function],
+              "warnTooManyClasses": [Function],
+              "withComponent": [Function],
+            },
           },
           Object {
             "instance": null,
@@ -668,5 +546,6 @@ ShallowWrapper {
       },
     },
   },
+  Symbol(enzyme.__childContext__): null,
 }
 `;

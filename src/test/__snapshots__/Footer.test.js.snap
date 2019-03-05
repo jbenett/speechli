@@ -36,10 +36,11 @@ ShallowWrapper {
         "$$typeof": Symbol(react.forward_ref),
         "attrs": Array [],
         "componentStyle": ComponentStyle {
-          "componentId": "sc-bdVaJa",
+          "componentId": "sc-bwzfXH",
           "isStatic": false,
           "rules": Array [
             "
+    display: inline-block;
     padding: 0.5rem 0.75rem;
     background-color: white;
     border-radius: 3px;
@@ -47,9 +48,6 @@ ShallowWrapper {
             [Function],
             ";
     font-weight: bold;
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
     transition: 150ms all;
     ",
             [Function],
@@ -66,12 +64,19 @@ ShallowWrapper {
             "
     }
 ",
+            "
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+",
           ],
         },
-        "displayName": "styled.div",
-        "foldedComponentIds": Array [],
+        "displayName": "Styled(styled.div)",
+        "foldedComponentIds": Array [
+          "sc-bdVaJa",
+        ],
         "render": [Function],
-        "styledComponentId": "sc-bdVaJa",
+        "styledComponentId": "sc-bwzfXH",
         "target": "div",
         "toString": [Function],
         "warnTooManyClasses": [Function],
@@ -104,10 +109,11 @@ ShallowWrapper {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-bdVaJa",
+            "componentId": "sc-bwzfXH",
             "isStatic": false,
             "rules": Array [
               "
+    display: inline-block;
     padding: 0.5rem 0.75rem;
     background-color: white;
     border-radius: 3px;
@@ -115,9 +121,6 @@ ShallowWrapper {
               [Function],
               ";
     font-weight: bold;
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
     transition: 150ms all;
     ",
               [Function],
@@ -134,12 +137,19 @@ ShallowWrapper {
               "
     }
 ",
+              "
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+",
             ],
           },
-          "displayName": "styled.div",
-          "foldedComponentIds": Array [],
+          "displayName": "Styled(styled.div)",
+          "foldedComponentIds": Array [
+            "sc-bdVaJa",
+          ],
           "render": [Function],
-          "styledComponentId": "sc-bdVaJa",
+          "styledComponentId": "sc-bwzfXH",
           "target": "div",
           "toString": [Function],
           "warnTooManyClasses": [Function],
@@ -170,5 +180,6 @@ ShallowWrapper {
       },
     },
   },
+  Symbol(enzyme.__childContext__): null,
 }
 `;
