@@ -15,7 +15,7 @@ const EditorWrapper = styled.div`
 const TitleInput = styled.input`
     font-family: ${props => props.theme.fontFamily};
     color: ${props => props.theme.fontColor.regular};
-    padding: 2rem;
+    padding: 2rem 2rem 1rem;
     margin-bottom: 0;
     font-size: 2rem;
     border: none;
@@ -26,6 +26,14 @@ const TitleInput = styled.input`
 
     &::placeholder {
         color: ${props => props.theme.fontColor.regularPlaceholder};
+    }
+`;
+
+const TagButtonGroup = styled.div`
+    padding: 0 2rem 1rem;
+
+    & .tag-button:not(:last-of-type) {
+        margin-right: 1rem;
     }
 `;
 
@@ -57,16 +65,16 @@ export default class Editor extends Component {
         tagButtonValues: PropTypes.array
     };
 
-    _placeholderText = 'My amazing text';
+    _placeholderText = "My amazing text";
     _htmlInjections = [
         '<span style="color:#757575;">',
         '<span style="background-color:#FFB3B3">',
-        '</span>',
-        '<div>',
-        '<br>',
-        '</div>',
+        "</span>",
+        "<div>",
+        "<br>",
+        "</div>",
         '<font color="#757575">',
-        '</font>'
+        "</font>"
     ];
 
     _getText = () => {
@@ -77,11 +85,14 @@ export default class Editor extends Component {
         return text;
     };
 
-    _getHtmlFromText = (highlighted="") => {
+    _getHtmlFromText = (highlighted = "") => {
         let text = this._getText();
         if (text) {
             if (highlighted && text.includes(highlighted)) {
-                text = text.replace(highlighted, `<span class="highlighted-text">${highlighted}</span>`);
+                text = text.replace(
+                    highlighted,
+                    `<span class="highlighted-text">${highlighted}</span>`
+                );
             }
             return `<span style="color:#757575;">${text}</span>`;
         } else {
@@ -89,12 +100,12 @@ export default class Editor extends Component {
         }
     };
 
-    _getTextFromHtml = ( html ) => {
-        this._htmlInjections.forEach((chunk) => {
-            while(html.includes(chunk)) {
-                html = html.replace(chunk, '');
+    _getTextFromHtml = html => {
+        this._htmlInjections.forEach(chunk => {
+            while (html.includes(chunk)) {
+                html = html.replace(chunk, "");
             }
-        })
+        });
         return html;
     };
 
@@ -127,18 +138,18 @@ export default class Editor extends Component {
                         onChange={this._onChangeTitle}
                         placeholder="My Lovely Title"
                     />
-                    { 
-                        tagButtonValues.map((text, index) => {
-                            return <TagButton
-                                active={text==activeTag}
-                                emoji="🐳"
-                                text= {text}
-                                key={index}
-                                color="rgba(92, 229, 194, 0.15)"
-                                onClick={()=>onTagChange(text)}
-                            />
-                        })
-                    }
+                    <TagButtonGroup>
+                        {tagButtonValues.map(({ value, props }, index) => {
+                            return (
+                                <TagButton
+                                    active={value === activeTag}
+                                    key={value}
+                                    onClick={() => onTagChange(value)}
+                                    {...props}
+                                />
+                            );
+                        })}
+                    </TagButtonGroup>
                     <BodyContentEditable
                         className="EditorContenteditable__Body"
                         tagName="pre"
