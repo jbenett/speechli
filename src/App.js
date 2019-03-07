@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { ThemeProvider } from "styled-components";
 import "semantic-ui-css/semantic.min.css";
-import axios from 'axios';
+import axios from "axios";
 
 import Header from "./components/Header";
 import ResultSidebar from "./components/ResultSidebar";
@@ -10,9 +10,13 @@ import Editor from "./components/Editor";
 
 import "./App.css";
 import theme from "./constants/theme";
-import ContentHandler from './ContentHandler'
+import ContentHandler from "./ContentHandler";
 
-const TAG_BUTTON_VALUES = ['lyrics', 'book', 'quote'];
+const TAG_BUTTON_VALUES = [
+  { value: "lyrics", props: { emoji: "👩‍🎤", text: "Song", color: "#ff1f79" } },
+  { value: "book", props: { emoji: "📚", text: "Story", color: "#4858f3" } },
+  { value: "quote", props: { emoji: "👨‍⚖️", text: "Speech", color: "#eddc22" } }
+];
 
 class App extends Component {
   state = {
@@ -27,20 +31,25 @@ class App extends Component {
     debounceTimer: new Date(),
     authorOptions: [],
     selectedAuthorOptions: [],
-    activeTag: null 
+    activeTag: null
   };
 
-  componentDidMount(){
-    axios.get('http://127.0.0.1:5000/discovery/authors/').then((response) => {
-      response.data.sort();
-      this.setState({ 
-        authorOptions: response.data.map((val) => {
-          return { label: val, value: val }; 
-        })
+  componentDidMount() {
+    axios
+      .get("http://127.0.0.1:5000/discovery/authors/")
+      .then(response => {
+        response.data.sort();
+        this.setState({
+          authorOptions: response.data.map(val => {
+            return { label: val, value: val };
+          })
+        });
+      })
+      .catch(error => {
+        console.log(
+          "Authors query did not work, will not render that component"
+        );
       });
-    }).catch((error) => {
-      console.log("Authors query did not work, will not render that component");
-    })
   }
 
   _toggleSidebar = (force = null) => {
@@ -52,9 +61,13 @@ class App extends Component {
     this.setState({ displayLoader });
   };
 
-  _onChangeText = (newText) => {
-    const content = new ContentHandler(newText, this.state.sentences, this.state.suggestions);
-    this.setState({ 
+  _onChangeText = newText => {
+    const content = new ContentHandler(
+      newText,
+      this.state.sentences,
+      this.state.suggestions
+    );
+    this.setState({
       debounceTimer: new Date(),
       text: newText,
       sentences: content.sentences,
@@ -64,23 +77,24 @@ class App extends Component {
     this._debouncedQuery(content);
   };
 
-  _debouncedQuery = (content) => {
+  _debouncedQuery = content => {
     const debounceDelay = 1000;
     setTimeout(() => {
       const now = new Date();
       if (now.getTime() - this.state.debounceTimer.getTime() >= debounceDelay) {
         this._toggleLoader(true);
-        const authors = this.state.selectedAuthorOptions.map((obj) => obj.value);
+        const authors = this.state.selectedAuthorOptions.map(obj => obj.value);
         content.query(this.state.activeTag, authors, (sentence, results) => {
-          // Currently its possible to query for the same sentence twice if the request takes 
-          // longer to return than the debounce timeout. The following line is a hacky way to 
+          // Currently its possible to query for the same sentence twice if the request takes
+          // longer to return than the debounce timeout. The following line is a hacky way to
           // ignore the repeated suggestions, but does still make the suggestions
-          if (this.state.sentences[sentence] == content.SentenceState.DONE) return;
+          if (this.state.sentences[sentence] == content.SentenceState.DONE)
+            return;
           const updatedSentences = { ...this.state.sentences };
           updatedSentences[sentence] = content.SentenceState.DONE;
-          this.setState({ 
+          this.setState({
             sentences: updatedSentences,
-            suggestions: [ ...this.state.suggestions, ...results],
+            suggestions: [...this.state.suggestions, ...results],
             displaySidebar: true
           });
           this._toggleLoader(false);
@@ -89,28 +103,36 @@ class App extends Component {
     }, debounceDelay);
   };
 
-  _removeSuggestion = (id) => {
-    const suggestion = this.state.suggestions.find((sug) => sug.id == id);
-    const content = new ContentHandler(this.state.text, this.state.sentences, this.state.suggestions);
+  _removeSuggestion = id => {
+    const suggestion = this.state.suggestions.find(sug => sug.id == id);
+    const content = new ContentHandler(
+      this.state.text,
+      this.state.sentences,
+      this.state.suggestions
+    );
     content.markSentenceAsDone(suggestion.source);
     content.removeSuggestionById(id);
-    this.setState({ 
-      suggestions: content.suggestions, 
-      displaySidebar: content.suggestions.length > 0, 
-      highlighted: ''
+    this.setState({
+      suggestions: content.suggestions,
+      displaySidebar: content.suggestions.length > 0,
+      highlighted: ""
     });
   };
 
-  _takeSuggestion = (id) => {
+  _takeSuggestion = id => {
     let newText = this.state.text;
-    const suggestion = this.state.suggestions.find((sug) => sug.id == id);
-    if (suggestion) { 
-      newText = newText.replace(suggestion.source, suggestion.text); // Currently only replaces one occurrence 
+    const suggestion = this.state.suggestions.find(sug => sug.id == id);
+    if (suggestion) {
+      newText = newText.replace(suggestion.source, suggestion.text); // Currently only replaces one occurrence
     }
-    const content = new ContentHandler(newText, this.state.sentences, this.state.suggestions);
+    const content = new ContentHandler(
+      newText,
+      this.state.sentences,
+      this.state.suggestions
+    );
     content.markSentenceAsDone(suggestion.text);
     content.removeSuggestionBySource(suggestion.text);
-    this.setState({ 
+    this.setState({
       text: newText,
       sentences: content.sentences,
       suggestions: content.suggestions,
@@ -118,37 +140,51 @@ class App extends Component {
     });
   };
 
-  _onHoverSuggestion = ( text='') => {
+  _onHoverSuggestion = (text = "") => {
     this.setState({ highlighted: text });
   };
 
-  _onChangeTitle = (newTitle) => {
+  _onChangeTitle = newTitle => {
     this.setState({ title: newTitle });
   };
 
-  _onFocusEditor = (editing) => {
+  _onFocusEditor = editing => {
     this.setState({ editing });
   };
 
-  _onChangeAuthors = ( selectedAuthorOptions ) => {
-    const content = new ContentHandler(this.state.text, this.state.sentences, this.state.suggestions);
+  _onChangeAuthors = selectedAuthorOptions => {
+    const content = new ContentHandler(
+      this.state.text,
+      this.state.sentences,
+      this.state.suggestions
+    );
     this.setState({ selectedAuthorOptions }, () => {
       this._debouncedQuery(content);
     });
   };
 
-  _onChangeTag = ( activeTag ) => {
+  _onChangeTag = activeTag => {
     this.setState({ activeTag });
   };
 
   render() {
-    const { title, text, editing, suggestions, displaySidebar, displayLoader, authorOptions, selectedAuthorOptions, activeTag } = this.state;
+    const {
+      title,
+      text,
+      editing,
+      suggestions,
+      displaySidebar,
+      displayLoader,
+      authorOptions,
+      selectedAuthorOptions,
+      activeTag
+    } = this.state;
 
     return (
       <ThemeProvider theme={theme}>
         <div className="App">
           <Header />
-          <Editor 
+          <Editor
             setText={this._onChangeText}
             setTitle={this._onChangeTitle}
             setEditorFocus={this._onFocusEditor}
@@ -168,16 +204,16 @@ class App extends Component {
               right: "calc(-100% + 30px)"
             }}
           />
-          <ResultSidebar 
-            displayed={displaySidebar} 
+          <ResultSidebar
+            displayed={displaySidebar}
             loading={displayLoader}
-            suggestions={suggestions} 
+            suggestions={suggestions}
             removeSuggestion={this._removeSuggestion}
             takeSuggestion={this._takeSuggestion}
             onHoverSuggestion={this._onHoverSuggestion}
-            authorOptions={ authorOptions }
-            selectedAuthorOptions={ selectedAuthorOptions }
-            onChangeAuthors={ this._onChangeAuthors }
+            authorOptions={authorOptions}
+            selectedAuthorOptions={selectedAuthorOptions}
+            onChangeAuthors={this._onChangeAuthors}
           />
         </div>
       </ThemeProvider>

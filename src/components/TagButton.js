@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import styled from "styled-components"
+import styled from "styled-components";
 
 /*
  * Example Usage:
@@ -18,7 +18,7 @@ const ButtonWrapper = styled.div`
     text-align: center;
     border-radius: 5px;
     background-color: ${props => props.color};
-    opacity: ${props => props.active ? "1.0": "0.5"};
+    opacity: ${props => (props.active ? "1.0" : "0.5")};
     transition: 100ms all;
     color: white;
     display: inline-flex;
@@ -38,20 +38,20 @@ export default class TagButton extends Component {
         active: PropTypes.bool,
         emoji: PropTypes.string.isRequired,
         text: PropTypes.string.isRequired
-    }
+    };
 
     static defaultProps = {
         active: false
     };
 
     render() {
-        const {emoji, text, ...props} = this.props;
+        const { emoji, text, ...props } = this.props;
 
         return (
-            <ButtonWrapper {...props}>
+            <ButtonWrapper className="tag-button" {...props}>
                 <span>{emoji}</span>
                 <span>{text}</span>
             </ButtonWrapper>
-        )
+        );
     }
 }
