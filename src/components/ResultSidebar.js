@@ -39,9 +39,10 @@ export default class ResultSidebar extends Component {
                     />
                 </SelectWrapper>
                 {this.props.suggestions.map(
-                    ({ source, text, author, image, id }, index) => {
+                    ({ source, tone, text, author, image, id }, index) => {
                         return (
                             <ResultItem
+                                tone={tone}
                                 author={author}
                                 quote={text}
                                 original={source}
