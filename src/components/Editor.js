@@ -51,14 +51,22 @@ export default class Editor extends Component {
         text: PropTypes.string,
         highlighted: PropTypes.string,
         editing: PropTypes.bool,
-        loading: PropTypes.bool
+        loading: PropTypes.bool,
+        activeTag: PropTypes.string,
+        onTagChange: PropTypes.func.isRequired,
+        tagButtonValues: PropTypes.array
     };
 
     _placeholderText = 'My amazing text';
     _htmlInjections = [
         '<span style="color:#757575;">',
         '<span style="background-color:#FFB3B3">',
-        '</span>'
+        '</span>',
+        '<div>',
+        '<br>',
+        '</div>',
+        '<font color="#757575">',
+        '</font>'
     ];
 
     _getText = () => {
@@ -107,7 +115,7 @@ export default class Editor extends Component {
     };
 
     render() {
-        const { title } = this.props;
+        const { title, tagButtonValues, activeTag, onTagChange } = this.props;
 
         return (
             <EditorWrapper>
@@ -119,6 +127,18 @@ export default class Editor extends Component {
                         onChange={this._onChangeTitle}
                         placeholder="My Lovely Title"
                     />
+                    { 
+                        tagButtonValues.map((text, index) => {
+                            return <TagButton
+                                active={text==activeTag}
+                                emoji="🐳"
+                                text= {text}
+                                key={index}
+                                color="rgba(92, 229, 194, 0.15)"
+                                onClick={()=>onTagChange(text)}
+                            />
+                        })
+                    }
                     <BodyContentEditable
                         className="EditorContenteditable__Body"
                         tagName="pre"

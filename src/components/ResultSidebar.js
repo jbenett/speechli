@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import ResultItem from "./ResultItem.js";
 import PropTypes from "prop-types";
+import Select from 'react-select';
 
 export default class ResultSidebar extends Component {
     static propTypes = {
@@ -9,7 +10,10 @@ export default class ResultSidebar extends Component {
         suggestions: PropTypes.array,
         removeSuggestion: PropTypes.func.isRequired,
         takeSuggestion: PropTypes.func.isRequired,
-        onHoverSuggestion: PropTypes.func.isRequired
+        onHoverSuggestion: PropTypes.func.isRequired,
+        authorOptions: PropTypes.array,
+        selectedAuthorOptions: PropTypes.array,
+        onChangeAuthors: PropTypes.func.isRequired
     };
 
     render() {
@@ -21,6 +25,12 @@ export default class ResultSidebar extends Component {
                         : "sidebar-container"
                 }
             >
+            <Select
+                value={ this.props.selectedAuthorOptions }
+                onChange={ this.props.onChangeAuthors}
+                options={ this.props.authorOptions }
+                isMulti={true}
+            />
             { this.props.suggestions.map(({ source, text, author, image, id }, index) => {
                 return <ResultItem
                     author={author}

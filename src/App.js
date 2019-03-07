@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { ThemeProvider } from "styled-components";
 import "semantic-ui-css/semantic.min.css";
+import axios from 'axios';
 
 import Header from "./components/Header";
 import ResultSidebar from "./components/ResultSidebar";
@@ -11,6 +12,8 @@ import "./App.css";
 import theme from "./constants/theme";
 import ContentHandler from './ContentHandler'
 
+const TAG_BUTTON_VALUES = ['lyrics', 'book', 'quote'];
+
 class App extends Component {
   state = {
     title: "",
@@ -19,10 +22,26 @@ class App extends Component {
     sentences: {},
     suggestions: [],
     editing: false,
-    displaySidebar: false,
+    displaySidebar: true,
     displayLoader: false,
-    debounceTimer: new Date()
+    debounceTimer: new Date(),
+    authorOptions: [],
+    selectedAuthorOptions: [],
+    activeTag: null 
   };
+
+  componentDidMount(){
+    axios.get('http://127.0.0.1:5000/discovery/authors/').then((response) => {
+      response.data.sort();
+      this.setState({ 
+        authorOptions: response.data.map((val) => {
+          return { label: val, value: val }; 
+        })
+      });
+    }).catch((error) => {
+      console.log("Authors query did not work, will not render that component");
+    })
+  }
 
   _toggleSidebar = (force = null) => {
     const { displaySidebar } = this.state;
@@ -51,7 +70,8 @@ class App extends Component {
       const now = new Date();
       if (now.getTime() - this.state.debounceTimer.getTime() >= debounceDelay) {
         this._toggleLoader(true);
-        content.query((sentence, results) => {
+        const authors = this.state.selectedAuthorOptions.map((obj) => obj.value);
+        content.query(this.state.activeTag, authors, (sentence, results) => {
           // Currently its possible to query for the same sentence twice if the request takes 
           // longer to return than the debounce timeout. The following line is a hacky way to 
           // ignore the repeated suggestions, but does still make the suggestions
@@ -110,8 +130,19 @@ class App extends Component {
     this.setState({ editing });
   };
 
+  _onChangeAuthors = ( selectedAuthorOptions ) => {
+    const content = new ContentHandler(this.state.text, this.state.sentences, this.state.suggestions);
+    this.setState({ selectedAuthorOptions }, () => {
+      this._debouncedQuery(content);
+    });
+  };
+
+  _onChangeTag = ( activeTag ) => {
+    this.setState({ activeTag });
+  };
+
   render() {
-    const { title, text, editing, suggestions, displaySidebar, displayLoader } = this.state;
+    const { title, text, editing, suggestions, displaySidebar, displayLoader, authorOptions, selectedAuthorOptions, activeTag } = this.state;
 
     return (
       <ThemeProvider theme={theme}>
@@ -125,6 +156,9 @@ class App extends Component {
             text={text}
             highlighted={this.state.highlighted}
             editing={editing}
+            activeTag={activeTag}
+            tagButtonValues={TAG_BUTTON_VALUES}
+            onTagChange={this._onChangeTag}
           />
           <Footer />
           <div
@@ -141,6 +175,9 @@ class App extends Component {
             removeSuggestion={this._removeSuggestion}
             takeSuggestion={this._takeSuggestion}
             onHoverSuggestion={this._onHoverSuggestion}
+            authorOptions={ authorOptions }
+            selectedAuthorOptions={ selectedAuthorOptions }
+            onChangeAuthors={ this._onChangeAuthors }
           />
         </div>
       </ThemeProvider>

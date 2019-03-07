@@ -53,11 +53,11 @@ export default class ContentHandler {
 		this.suggestions = this.suggestions.filter((sug) => sug.source != source);
 	};
 
-	query = (setStateCallback) => {
+	query = (tag, authors, setStateCallback) => {
 		for (let sentence of Object.keys(this.sentences)) {
 			if (this.sentences[sentence] == this.SentenceState.NEW) {
 				const url='http://127.0.0.1:5000/discovery/suggest/'; // TODO this'll need to change
-				axios.post(url, { sentence }).then(function (response) {
+				axios.post(url, { sentence, authors, type: tag }).then(function (response) {
 					setStateCallback(sentence, response.data.map((sug) => {
 							return {
 								id: Math.random().toString(36).substring(2),
