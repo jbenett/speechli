@@ -4,6 +4,7 @@
   "homepage": "http://jbenett.github.io/CSE5914",
   "dependencies": {
     "axios": "^0.18.0",
+    "emoji-random": "^0.1.2",
     "enzyme": "^3.8.0",
     "enzyme-adapter-react-16": "^1.9.1",
     "faker": "^4.1.0",
