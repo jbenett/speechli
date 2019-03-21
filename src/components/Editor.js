@@ -49,7 +49,7 @@ const BodyContentEditable = styled(ContentEditable)`
 
 const EditorContenteditableWrapper = styled.div`
     width: 60%;
-    display: flex;
+    display: inline;
 `;
 
 export default class Editor extends Component {
