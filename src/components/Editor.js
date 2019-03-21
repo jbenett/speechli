@@ -44,6 +44,7 @@ const BodyContentEditable = styled(ContentEditable)`
     font-size: 1.25rem;
     margin-top: 0;
     word-break: break-all;
+    word-wrap: break-word;
     ${props => props.theme.reset.input}
 `;
 
