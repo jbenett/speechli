@@ -3,11 +3,11 @@ import { ThemeProvider } from "styled-components";
 import "semantic-ui-css/semantic.min.css";
 import axios from "axios";
 
+import { documentManager } from "./documentUtils";
 import Header from "./components/Header";
 import ResultSidebar from "./components/ResultSidebar";
 import Footer from "./components/Footer";
 import Editor from "./components/Editor";
-import DocumentManager from "./components/DocumentManager";
 
 import "./App.css";
 import theme from "./constants/theme";
@@ -168,6 +168,15 @@ class App extends Component {
     this.setState({ activeTag });
   };
 
+  _onChangeDocument = ({ title, text }) => {
+    this.setState({ title, text });
+  };
+
+  _onSaveDocument = () => {
+    const { title, text } = this.state;
+    documentManager.storeDocument({ title, text });
+  };
+
   render() {
     const {
       title,
@@ -184,39 +193,41 @@ class App extends Component {
     return (
       <ThemeProvider theme={theme}>
         <div className="App">
-          {/*<Header />
-                    <Editor
-                      setText={this._onChangeText}
-                      setTitle={this._onChangeTitle}
-                      setEditorFocus={this._onFocusEditor}
-                      title={title}
-                      text={text}
-                      highlighted={this.state.highlighted}
-                      editing={editing}
-                      activeTag={activeTag}
-                      tagButtonValues={TAG_BUTTON_VALUES}
-                      onTagChange={this._onChangeTag}
-                    />*/}
-          <DocumentManager />
-          {/*<Footer />
-                    <div
-                      className={displayLoader ? "loader hug-sidebar" : "hug-sidebar"}
-                      style={{
-                        top: "calc(-100% + 25px)",
-                        right: "calc(-100% + 30px)"
-                      }}
-                    />
-                    <ResultSidebar
-                      displayed={displaySidebar}
-                      loading={displayLoader}
-                      suggestions={suggestions}
-                      removeSuggestion={this._removeSuggestion}
-                      takeSuggestion={this._takeSuggestion}
-                      onHoverSuggestion={this._onHoverSuggestion}
-                      authorOptions={authorOptions}
-                      selectedAuthorOptions={selectedAuthorOptions}
-                      onChangeAuthors={this._onChangeAuthors}
-                    />*/}
+          <Header />
+          <Editor
+            setText={this._onChangeText}
+            setTitle={this._onChangeTitle}
+            setEditorFocus={this._onFocusEditor}
+            title={title}
+            text={text}
+            highlighted={this.state.highlighted}
+            editing={editing}
+            activeTag={activeTag}
+            tagButtonValues={TAG_BUTTON_VALUES}
+            onTagChange={this._onChangeTag}
+          />
+          <Footer
+            onSaveDocument={this._onSaveDocument}
+            onChangeDocument={this._onChangeDocument}
+          />
+          <div
+            className={displayLoader ? "loader hug-sidebar" : "hug-sidebar"}
+            style={{
+              top: "calc(-100% + 25px)",
+              right: "calc(-100% + 30px)"
+            }}
+          />
+          <ResultSidebar
+            displayed={displaySidebar}
+            loading={displayLoader}
+            suggestions={suggestions}
+            removeSuggestion={this._removeSuggestion}
+            takeSuggestion={this._takeSuggestion}
+            onHoverSuggestion={this._onHoverSuggestion}
+            authorOptions={authorOptions}
+            selectedAuthorOptions={selectedAuthorOptions}
+            onChangeAuthors={this._onChangeAuthors}
+          />
         </div>
       </ThemeProvider>
     );

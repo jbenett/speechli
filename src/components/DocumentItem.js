@@ -8,6 +8,7 @@ const DocumentItemWrapper = styled.div`
 	-webkit-box-shadow: 0px 0px 23px -1px rgba(35, 35, 35, 0.15);
 	-moz-box-shadow: 0px 0px 23px -1px rgba(35, 35, 35, 0.15);
 	box-shadow: 0px 0px 23px -1px rgba(35, 35, 35, 0.15);
+	border-radius: 3px;
 
 	&:hover {
 		opacity: 0.65;
@@ -65,10 +66,10 @@ export default class DocumentItem extends Component {
 
 	render() {
 		const { emoji } = this.state;
-		const { title, text } = this.props;
+		const { title, text, ...props } = this.props;
 
 		return (
-			<DocumentItemWrapper>
+			<DocumentItemWrapper {...props}>
 				<DocumentItemContentWrapper>
 					<EmojiTextWrapper>
 						<EmojiText>{emoji}</EmojiText>
