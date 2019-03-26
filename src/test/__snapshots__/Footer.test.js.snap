@@ -18,85 +18,24 @@ ShallowWrapper {
     "key": undefined,
     "nodeType": "host",
     "props": Object {
-      "children": <ForwardRef>
-        🤑 Support The Boys 🤑
-      </ForwardRef>,
-    },
-    "ref": null,
-    "rendered": Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "function",
-      "props": Object {
-        "children": "🤑 Support The Boys 🤑",
-      },
-      "ref": null,
-      "rendered": "🤑 Support The Boys 🤑",
-      "type": Object {
-        "$$typeof": Symbol(react.forward_ref),
-        "attrs": Array [],
-        "componentStyle": ComponentStyle {
-          "componentId": "sc-bwzfXH",
-          "isStatic": false,
-          "rules": Array [
-            "
-    display: inline-block;
-    padding: 0.5rem 0.75rem;
-    background-color: white;
-    border-radius: 3px;
-    font-family: ",
-            [Function],
-            ";
-    font-weight: bold;
-    transition: 150ms all;
-    ",
-            [Function],
-            "
-
-    &:hover {
-        cursor: pointer;
-        color: white;
-        background-color: ",
-            [Function],
-            ";
-        ",
-            [Function],
-            "
-    }
-",
-            "
-    position: absolute;
-    bottom: 15px;
-    left: 15px;
-",
-          ],
-        },
-        "displayName": "Styled(styled.div)",
-        "foldedComponentIds": Array [
-          "sc-bdVaJa",
-        ],
-        "render": [Function],
-        "styledComponentId": "sc-bwzfXH",
-        "target": "div",
-        "toString": [Function],
-        "warnTooManyClasses": [Function],
-        "withComponent": [Function],
-      },
-    },
-    "type": "div",
-  },
-  Symbol(enzyme.__nodes__): Array [
-    Object {
-      "instance": null,
-      "key": undefined,
-      "nodeType": "host",
-      "props": Object {
-        "children": <ForwardRef>
+      "children": Array [
+        <ForwardRef>
           🤑 Support The Boys 🤑
         </ForwardRef>,
-      },
-      "ref": null,
-      "rendered": Object {
+        <ForwardRef
+          onClick={[Function]}
+        >
+          📝 Manage Documents
+        </ForwardRef>,
+        <ForwardRef>
+          💾 Save Document
+        </ForwardRef>,
+        false,
+      ],
+    },
+    "ref": null,
+    "rendered": Array [
+      Object {
         "instance": null,
         "key": undefined,
         "nodeType": "function",
@@ -109,7 +48,7 @@ ShallowWrapper {
           "$$typeof": Symbol(react.forward_ref),
           "attrs": Array [],
           "componentStyle": ComponentStyle {
-            "componentId": "sc-bwzfXH",
+            "componentId": "sc-htoDjs",
             "isStatic": false,
             "rules": Array [
               "
@@ -141,6 +80,7 @@ ShallowWrapper {
     position: absolute;
     bottom: 15px;
     left: 15px;
+    width: 190px;
 ",
             ],
           },
@@ -149,13 +89,349 @@ ShallowWrapper {
             "sc-bdVaJa",
           ],
           "render": [Function],
-          "styledComponentId": "sc-bwzfXH",
+          "styledComponentId": "sc-htoDjs",
           "target": "div",
           "toString": [Function],
           "warnTooManyClasses": [Function],
           "withComponent": [Function],
         },
       },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": "📝 Manage Documents",
+          "onClick": [Function],
+        },
+        "ref": null,
+        "rendered": "📝 Manage Documents",
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-dnqmqq",
+            "isStatic": false,
+            "rules": Array [
+              "
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    background-color: white;
+    border-radius: 3px;
+    font-family: ",
+              [Function],
+              ";
+    font-weight: bold;
+    transition: 150ms all;
+    ",
+              [Function],
+              "
+
+    &:hover {
+        cursor: pointer;
+        color: white;
+        background-color: ",
+              [Function],
+              ";
+        ",
+              [Function],
+              "
+    }
+",
+              "
+    position: absolute;
+    bottom: 15px;
+    width: 190px;
+    left: 220px;
+",
+            ],
+          },
+          "displayName": "Styled(styled.div)",
+          "foldedComponentIds": Array [
+            "sc-bdVaJa",
+          ],
+          "render": [Function],
+          "styledComponentId": "sc-dnqmqq",
+          "target": "div",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        },
+      },
+      Object {
+        "instance": null,
+        "key": undefined,
+        "nodeType": "function",
+        "props": Object {
+          "children": "💾 Save Document",
+          "onClick": undefined,
+        },
+        "ref": null,
+        "rendered": "💾 Save Document",
+        "type": Object {
+          "$$typeof": Symbol(react.forward_ref),
+          "attrs": Array [],
+          "componentStyle": ComponentStyle {
+            "componentId": "sc-iwsKbI",
+            "isStatic": false,
+            "rules": Array [
+              "
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    background-color: white;
+    border-radius: 3px;
+    font-family: ",
+              [Function],
+              ";
+    font-weight: bold;
+    transition: 150ms all;
+    ",
+              [Function],
+              "
+
+    &:hover {
+        cursor: pointer;
+        color: white;
+        background-color: ",
+              [Function],
+              ";
+        ",
+              [Function],
+              "
+    }
+",
+              "
+    position: absolute;
+    bottom: 15px;
+    left: 425px;
+",
+            ],
+          },
+          "displayName": "Styled(styled.div)",
+          "foldedComponentIds": Array [
+            "sc-bdVaJa",
+          ],
+          "render": [Function],
+          "styledComponentId": "sc-iwsKbI",
+          "target": "div",
+          "toString": [Function],
+          "warnTooManyClasses": [Function],
+          "withComponent": [Function],
+        },
+      },
+      false,
+    ],
+    "type": "div",
+  },
+  Symbol(enzyme.__nodes__): Array [
+    Object {
+      "instance": null,
+      "key": undefined,
+      "nodeType": "host",
+      "props": Object {
+        "children": Array [
+          <ForwardRef>
+            🤑 Support The Boys 🤑
+          </ForwardRef>,
+          <ForwardRef
+            onClick={[Function]}
+          >
+            📝 Manage Documents
+          </ForwardRef>,
+          <ForwardRef>
+            💾 Save Document
+          </ForwardRef>,
+          false,
+        ],
+      },
+      "ref": null,
+      "rendered": Array [
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": "🤑 Support The Boys 🤑",
+          },
+          "ref": null,
+          "rendered": "🤑 Support The Boys 🤑",
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-htoDjs",
+              "isStatic": false,
+              "rules": Array [
+                "
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    background-color: white;
+    border-radius: 3px;
+    font-family: ",
+                [Function],
+                ";
+    font-weight: bold;
+    transition: 150ms all;
+    ",
+                [Function],
+                "
+
+    &:hover {
+        cursor: pointer;
+        color: white;
+        background-color: ",
+                [Function],
+                ";
+        ",
+                [Function],
+                "
+    }
+",
+                "
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    width: 190px;
+",
+              ],
+            },
+            "displayName": "Styled(styled.div)",
+            "foldedComponentIds": Array [
+              "sc-bdVaJa",
+            ],
+            "render": [Function],
+            "styledComponentId": "sc-htoDjs",
+            "target": "div",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": "📝 Manage Documents",
+            "onClick": [Function],
+          },
+          "ref": null,
+          "rendered": "📝 Manage Documents",
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-dnqmqq",
+              "isStatic": false,
+              "rules": Array [
+                "
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    background-color: white;
+    border-radius: 3px;
+    font-family: ",
+                [Function],
+                ";
+    font-weight: bold;
+    transition: 150ms all;
+    ",
+                [Function],
+                "
+
+    &:hover {
+        cursor: pointer;
+        color: white;
+        background-color: ",
+                [Function],
+                ";
+        ",
+                [Function],
+                "
+    }
+",
+                "
+    position: absolute;
+    bottom: 15px;
+    width: 190px;
+    left: 220px;
+",
+              ],
+            },
+            "displayName": "Styled(styled.div)",
+            "foldedComponentIds": Array [
+              "sc-bdVaJa",
+            ],
+            "render": [Function],
+            "styledComponentId": "sc-dnqmqq",
+            "target": "div",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
+        },
+        Object {
+          "instance": null,
+          "key": undefined,
+          "nodeType": "function",
+          "props": Object {
+            "children": "💾 Save Document",
+            "onClick": undefined,
+          },
+          "ref": null,
+          "rendered": "💾 Save Document",
+          "type": Object {
+            "$$typeof": Symbol(react.forward_ref),
+            "attrs": Array [],
+            "componentStyle": ComponentStyle {
+              "componentId": "sc-iwsKbI",
+              "isStatic": false,
+              "rules": Array [
+                "
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    background-color: white;
+    border-radius: 3px;
+    font-family: ",
+                [Function],
+                ";
+    font-weight: bold;
+    transition: 150ms all;
+    ",
+                [Function],
+                "
+
+    &:hover {
+        cursor: pointer;
+        color: white;
+        background-color: ",
+                [Function],
+                ";
+        ",
+                [Function],
+                "
+    }
+",
+                "
+    position: absolute;
+    bottom: 15px;
+    left: 425px;
+",
+              ],
+            },
+            "displayName": "Styled(styled.div)",
+            "foldedComponentIds": Array [
+              "sc-bdVaJa",
+            ],
+            "render": [Function],
+            "styledComponentId": "sc-iwsKbI",
+            "target": "div",
+            "toString": [Function],
+            "warnTooManyClasses": [Function],
+            "withComponent": [Function],
+          },
+        },
+        false,
+      ],
       "type": "div",
     },
   ],
@@ -180,5 +456,6 @@ ShallowWrapper {
       },
     },
   },
+  Symbol(enzyme.__childContext__): null,
 }
 `;
