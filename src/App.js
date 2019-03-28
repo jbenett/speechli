@@ -3,6 +3,7 @@ import { ThemeProvider } from "styled-components";
 import "semantic-ui-css/semantic.min.css";
 import axios from "axios";
 
+import { documentManager } from "./documentUtils";
 import Header from "./components/Header";
 import ResultSidebar from "./components/ResultSidebar";
 import Footer from "./components/Footer";
@@ -167,6 +168,15 @@ class App extends Component {
     this.setState({ activeTag });
   };
 
+  _onChangeDocument = ({ title, text }) => {
+    this.setState({ title, text });
+  };
+
+  _onSaveDocument = () => {
+    const { title, text } = this.state;
+    documentManager.storeDocument({ title, text });
+  };
+
   render() {
     const {
       title,
@@ -196,7 +206,10 @@ class App extends Component {
             tagButtonValues={TAG_BUTTON_VALUES}
             onTagChange={this._onChangeTag}
           />
-          <Footer />
+          <Footer
+            onSaveDocument={this._onSaveDocument}
+            onChangeDocument={this._onChangeDocument}
+          />
           <div
             className={displayLoader ? "loader hug-sidebar" : "hug-sidebar"}
             style={{

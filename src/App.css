@@ -59,6 +59,23 @@ body,
   padding: 10px;
 }
 
+.result--tone {
+  padding: 5px 10px;
+  text-align: center;
+  border-radius: 3px;
+  -webkit-box-shadow: 0px 0px 23px -1px rgba(35, 35, 35, 0.15);
+  -moz-box-shadow: 0px 0px 23px -1px rgba(35, 35, 35, 0.15);
+  box-shadow: 0px 0px 23px -1px rgba(35, 35, 35, 0.15);
+  display: inline-flex;
+  margin-bottom: 10px !important;
+}
+
+.result--tone::before {
+  content: "Tone:";
+  font-weight: bold;
+  margin-right: 5px;
+}
+
 .highlighted-text {
   border-radius: 3px;
   background-color: rgba(255, 71, 65, 0.15);
