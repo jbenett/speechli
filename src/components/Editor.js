@@ -70,11 +70,12 @@ export default class Editor extends Component {
 
     _placeholderText = "My amazing text";
     _htmlInjections = [
+        '<span class="highlighted-text">',
         '<span style="color:#757575;">',
         '<span style="background-color:#FFB3B3">',
+        "\n</span>",
         "</span>",
         "<div>",
-        "<br>",
         "</div>",
         '<font color="#757575">',
         "</font>"
@@ -97,7 +98,7 @@ export default class Editor extends Component {
                     `<span class="highlighted-text">${highlighted}</span>`
                 );
             }
-            return `<span style="color:#757575;">${text}</span>`;
+            return `<span style="color:#757575;">${text}\n</span>`;
         } else {
             return text;
         }
@@ -109,6 +110,7 @@ export default class Editor extends Component {
                 html = html.replace(chunk, "");
             }
         });
+        html = html.replace("<br>", ".\n").replace("..", ".").replace(" .", ".");
         return html;
     };
 
