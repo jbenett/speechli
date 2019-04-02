@@ -173,7 +173,22 @@ class App extends Component {
   };
 
   _onChangeTag = activeTag => {
-    this.setState({ activeTag });
+    const content = new ContentHandler(
+      this.state.text,
+      this.state.sentences,
+      this.state.suggestions
+    );
+    content.hardResetSuggestions();
+    this.setState(
+      { 
+        activeTag, 
+        sentences: content.sentences,
+        suggestions: content.suggestions,
+        displaySidebar: content.suggestions.length > 0 
+      }, () => {
+        this._debouncedQuery(content);
+      }
+    );
   };
 
   _onChangeDocument = ({ title, text }) => {
