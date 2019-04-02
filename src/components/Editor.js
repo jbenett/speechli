@@ -113,6 +113,18 @@ export default class Editor extends Component {
         return html;
     };
 
+     _onPaste = (e) => {
+        var clipboardData, pastedData;
+
+        e.stopPropagation();
+        e.preventDefault();
+
+        clipboardData = e.clipboardData || window.clipboardData;
+        pastedData = clipboardData.getData('Text');
+
+        this.props.setText(pastedData)
+    }
+
     _onChangeTitle = e => {
         this.props.setTitle(e.target.value);
     };
@@ -161,6 +173,7 @@ export default class Editor extends Component {
                         onFocus={this._onFocusBody}
                         onBlur={this._onBlurBody}
                         onChange={this._onChangeBody}
+                        onPaste ={this._onPaste}
                     />
                 </EditorContenteditableWrapper>
             </EditorWrapper>
