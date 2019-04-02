@@ -43,13 +43,12 @@ const BodyContentEditable = styled(ContentEditable)`
     padding: 0 2rem 2rem;
     font-size: 1.25rem;
     margin-top: 0;
-    word-break: break-all;
-    word-wrap: break-word;
+    white-space: pre-wrap;
     ${props => props.theme.reset.input}
 `;
 
 const EditorContenteditableWrapper = styled.div`
-    width: 60%;
+    width: 50%;
     display: inline;
 `;
 
