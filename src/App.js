@@ -32,7 +32,7 @@ class App extends Component {
     debounceTimer: new Date(),
     authorOptions: [],
     selectedAuthorOptions: [],
-    activeTag: null
+    activeTag: "quote"
   };
 
   componentDidMount() {
@@ -159,9 +159,17 @@ class App extends Component {
       this.state.sentences,
       this.state.suggestions
     );
-    this.setState({ selectedAuthorOptions }, () => {
-      this._debouncedQuery(content);
-    });
+    content.hardResetSuggestions();
+    this.setState(
+      { 
+        selectedAuthorOptions, 
+        sentences: content.sentences,
+        suggestions: content.suggestions,
+        displaySidebar: content.suggestions.length > 0 
+      }, () => {
+        this._debouncedQuery(content);
+      }
+    );
   };
 
   _onChangeTag = activeTag => {

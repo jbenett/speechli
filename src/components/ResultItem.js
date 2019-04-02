@@ -50,10 +50,6 @@ export default class ResultItem extends Component {
               Take Suggestion
             </Button>
             <div className="result-profile">
-              <img
-                className="profile-items profile-items--image"
-                src={this.props.image}
-              />
               <p className="profile-items profile-items--text">
                 {this.props.author}
               </p>
