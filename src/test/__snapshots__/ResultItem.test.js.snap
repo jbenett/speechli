@@ -62,10 +62,6 @@ ShallowWrapper {
           <div
             className="result-profile"
           >
-            <img
-              className="profile-items profile-items--image"
-              src=""
-            />
             <p
               className="profile-items profile-items--text"
             >
@@ -118,10 +114,6 @@ ShallowWrapper {
             <div
               className="result-profile"
             >
-              <img
-                className="profile-items profile-items--image"
-                src=""
-              />
               <p
                 className="profile-items profile-items--text"
               >
@@ -219,10 +211,6 @@ ShallowWrapper {
               <div
                 className="result-profile"
               >
-                <img
-                  className="profile-items profile-items--image"
-                  src=""
-                />
                 <p
                   className="profile-items profile-items--text"
                 >
@@ -292,46 +280,26 @@ ShallowWrapper {
               "key": undefined,
               "nodeType": "host",
               "props": Object {
-                "children": Array [
-                  <img
-                    className="profile-items profile-items--image"
-                    src=""
-                  />,
-                  <p
-                    className="profile-items profile-items--text"
-                  >
-                    author
-                  </p>,
-                ],
+                "children": <p
+                  className="profile-items profile-items--text"
+                >
+                  author
+                </p>,
                 "className": "result-profile",
               },
               "ref": null,
-              "rendered": Array [
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "className": "profile-items profile-items--image",
-                    "src": "",
-                  },
-                  "ref": null,
-                  "rendered": null,
-                  "type": "img",
+              "rendered": Object {
+                "instance": null,
+                "key": undefined,
+                "nodeType": "host",
+                "props": Object {
+                  "children": "author",
+                  "className": "profile-items profile-items--text",
                 },
-                Object {
-                  "instance": null,
-                  "key": undefined,
-                  "nodeType": "host",
-                  "props": Object {
-                    "children": "author",
-                    "className": "profile-items profile-items--text",
-                  },
-                  "ref": null,
-                  "rendered": "author",
-                  "type": "p",
-                },
-              ],
+                "ref": null,
+                "rendered": "author",
+                "type": "p",
+              },
               "type": "div",
             },
           ],
@@ -382,10 +350,6 @@ ShallowWrapper {
             <div
               className="result-profile"
             >
-              <img
-                className="profile-items profile-items--image"
-                src=""
-              />
               <p
                 className="profile-items profile-items--text"
               >
@@ -438,10 +402,6 @@ ShallowWrapper {
               <div
                 className="result-profile"
               >
-                <img
-                  className="profile-items profile-items--image"
-                  src=""
-                />
                 <p
                   className="profile-items profile-items--text"
                 >
@@ -539,10 +499,6 @@ ShallowWrapper {
                 <div
                   className="result-profile"
                 >
-                  <img
-                    className="profile-items profile-items--image"
-                    src=""
-                  />
                   <p
                     className="profile-items profile-items--text"
                   >
@@ -612,46 +568,26 @@ ShallowWrapper {
                 "key": undefined,
                 "nodeType": "host",
                 "props": Object {
-                  "children": Array [
-                    <img
-                      className="profile-items profile-items--image"
-                      src=""
-                    />,
-                    <p
-                      className="profile-items profile-items--text"
-                    >
-                      author
-                    </p>,
-                  ],
+                  "children": <p
+                    className="profile-items profile-items--text"
+                  >
+                    author
+                  </p>,
                   "className": "result-profile",
                 },
                 "ref": null,
-                "rendered": Array [
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "className": "profile-items profile-items--image",
-                      "src": "",
-                    },
-                    "ref": null,
-                    "rendered": null,
-                    "type": "img",
+                "rendered": Object {
+                  "instance": null,
+                  "key": undefined,
+                  "nodeType": "host",
+                  "props": Object {
+                    "children": "author",
+                    "className": "profile-items profile-items--text",
                   },
-                  Object {
-                    "instance": null,
-                    "key": undefined,
-                    "nodeType": "host",
-                    "props": Object {
-                      "children": "author",
-                      "className": "profile-items profile-items--text",
-                    },
-                    "ref": null,
-                    "rendered": "author",
-                    "type": "p",
-                  },
-                ],
+                  "ref": null,
+                  "rendered": "author",
+                  "type": "p",
+                },
                 "type": "div",
               },
             ],
@@ -684,6 +620,5 @@ ShallowWrapper {
       },
     },
   },
-  Symbol(enzyme.__childContext__): null,
 }
 `;
