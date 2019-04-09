@@ -48,7 +48,7 @@ const BodyContentEditable = styled(ContentEditable)`
 `;
 
 const EditorContenteditableWrapper = styled.div`
-    width: 50%;
+    width: 40%;
     height: 80%;
     display: inline;
     overflow: scroll;
