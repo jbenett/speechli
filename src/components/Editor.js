@@ -10,6 +10,7 @@ const EditorWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 50rem;
 `;
 
 const TitleInput = styled.input`
@@ -49,7 +50,10 @@ const BodyContentEditable = styled(ContentEditable)`
 
 const EditorContenteditableWrapper = styled.div`
     width: 50%;
+    height: 80%;
     display: inline;
+    overflow: scroll;
+    overflow-x: hidden;
 `;
 
 export default class Editor extends Component {
