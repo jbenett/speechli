@@ -11,6 +11,11 @@ const SupportButton = styled(Button)`
     width: 190px;
 `;
 
+const ExitButton = styled(Button)`
+    position: absolute;
+    right: 0;
+`;
+
 const ManageDocumentButton = styled(Button)`
     position: absolute;
     bottom: 15px;
@@ -31,6 +36,14 @@ const ModalWrapper = styled.div`
     right: 0;
     bottom: 0;
     z-index: 1;
+`;
+
+const Header = styled.div`
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  padding-bottom: 10px;
 `;
 
 const ModalContent = styled.div`
@@ -96,7 +109,12 @@ class Footer extends Component {
                     <ModalWrapper>
                         <ModalOverlay />
                         <ModalContent>
+                          <Header>
                             <h3>Saved Documents</h3>
+                            <ExitButton onClick={() =>
+                                this.setState({ showDocuments: !showDocuments })
+                            }> Close </ExitButton>
+                          </Header>
                             <DocumentManager
                                 onChangeDocument={this._onChangeDocument}
                             />
