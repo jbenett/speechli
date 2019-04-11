@@ -36,6 +36,8 @@ const ModalWrapper = styled.div`
     right: 0;
     bottom: 0;
     z-index: 1;
+    overflow: auto;
+    max-height: 50rem;
 `;
 
 const Header = styled.div`
