@@ -75,7 +75,9 @@ class App extends Component {
       suggestions: content.suggestions,
       displaySidebar: content.suggestions.length > 0
     });
-    this._debouncedQuery(content);
+    if (content) {
+      this._debouncedQuery(content);
+    }
   };
 
   _debouncedQuery = content => {
@@ -236,8 +238,8 @@ class App extends Component {
           <div
             className={displayLoader ? "loader hug-sidebar" : "hug-sidebar"}
             style={{
-              top: "calc(-100% + 25px)",
-              right: "calc(-100% + 30px)"
+              top: "calc(-100% + 50px)",
+              right: "calc(-100% + 60px)"
             }}
           />
           <ResultSidebar

@@ -75,13 +75,21 @@ class Footer extends Component {
         this.setState({ showDocuments: false });
     };
 
+    _supportTheBoys = () => {
+        const url = "https://chipotle.olo.com/menu/chipotle-osu-3";
+        const a = document.createElement("a");
+        a.href = url;
+        a.target = "_blank";
+        a.click();
+    }
+
     render() {
         const { showDocuments } = this.state;
         const { onSaveDocument } = this.props;
 
         return (
             <div>
-                <SupportButton>🤑&nbsp;Support The Boys&nbsp;🤑</SupportButton>
+                <SupportButton onClick={this._supportTheBoys}>🤑&nbsp;Support The Boys&nbsp;🤑</SupportButton>
                 <ManageDocumentButton
                     onClick={() =>
                         this.setState({ showDocuments: !showDocuments })

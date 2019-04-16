@@ -133,6 +133,10 @@ export default class Editor extends Component {
         this.props.setText(this._getTextFromHtml(e.target.value));
     };
 
+    _onClickBody = e => {
+        e.target.focus();
+    };
+
     _onFocusBody = e => {
         this.props.setEditorFocus(true);
     };
@@ -140,6 +144,7 @@ export default class Editor extends Component {
     _onBlurBody = e => {
         this.props.setEditorFocus(false);
     };
+
 
     render() {
         const { title, tagButtonValues, activeTag, onTagChange } = this.props;
@@ -170,6 +175,7 @@ export default class Editor extends Component {
                         className="EditorContenteditable__Body"
                         tagName="pre"
                         html={this._getHtmlFromText(this.props.highlighted)}
+                        onClick={this._onClickBody}
                         onFocus={this._onFocusBody}
                         onBlur={this._onBlurBody}
                         onChange={this._onChangeBody}
