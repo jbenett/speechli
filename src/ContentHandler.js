@@ -61,6 +61,19 @@ export default class ContentHandler {
 		}
 	};
 
+	moonshotQuery = (authors, setStateCallback) => {
+		const url = "http://127.0.0.1:5000/discovery/moonshot/";
+		axios.post(url, { authors, sentences: Object.keys(this.sentences)} )
+			.then(function(response) {
+				console.log("Moonshot query response data: ", response.data);
+				setStateCallback(response.data);
+			})
+			.catch(function(error) {
+				console.log("Error in moonshot query: ", error);
+				setStateCallback({"Hello world": "Hallo WURLD"});
+			})
+	};
+
 	query = (tag, authors, setStateCallback) => {
 		for (let sentence of Object.keys(this.sentences)) {
 			if (this.sentences[sentence] == this.SentenceState.NEW) {
