@@ -48,8 +48,11 @@ const BodyContentEditable = styled(ContentEditable)`
 `;
 
 const EditorContenteditableWrapper = styled.div`
-    width: 50%;
+    width: 40%;
+    height: 80%;
     display: inline;
+    overflow: scroll;
+    overflow-x: hidden;
 `;
 
 export default class Editor extends Component {
@@ -109,7 +112,7 @@ export default class Editor extends Component {
                 html = html.replace(chunk, "");
             }
         });
-        html = html.replace("<br>", ".\n").replace("..", ".").replace(" .", ".");
+        html = html.replace("<br>", ".\n").replace("..", ".").replace(" .", ".").replace("\n.\n", "\n\n");
         return html;
     };
 

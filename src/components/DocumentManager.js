@@ -3,7 +3,14 @@ import PropTypes from "prop-types";
 import DocumnentItem from "./DocumentItem";
 import { documentManager } from "../documentUtils";
 
+const divStyle = {
+	overflow: 'auto',
+	maxHeight:'30rem',
+};
+
 export default class DocumentManager extends Component {
+
+
 	static propTypes = {
 		onChangeDocument: PropTypes.func
 	};
@@ -17,7 +24,7 @@ export default class DocumentManager extends Component {
 		const { onChangeDocument } = this.props;
 
 		return (
-			<div>
+			<div style = {divStyle}>
 				{documents.map((doc, i) => (
 					<DocumnentItem
 						key={i}
