@@ -112,7 +112,7 @@ export default class Editor extends Component {
                 html = html.replace(chunk, "");
             }
         });
-        html = html.replace("<br>", ".\n").replace("..", ".").replace(" .", ".").replace("\n.\n", "\n\n");
+        html = html.replace("<br>", ".\n").replace("..", ".").replace("?.", "?").replace(" .", ".").replace("\n.\n", "\n\n");
         return html;
     };
 
