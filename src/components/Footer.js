@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
+
 import Button from "./Button";
 import styled from "styled-components";
 import DocumentManager from "./DocumentManager";
@@ -29,6 +31,12 @@ const SaveDocumentButton = styled(Button)`
     left: 425px;
 `;
 
+const MoonshotButton = styled(Button)`
+    position: absolute;
+    bottom: 15px;
+    left: 590px;
+`;
+
 const ModalWrapper = styled.div`
     position: absolute;
     left: 0;
@@ -41,11 +49,11 @@ const ModalWrapper = styled.div`
 `;
 
 const Header = styled.div`
-  display: flex;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  padding-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    padding-bottom: 10px;
 `;
 
 const ModalContent = styled.div`
@@ -96,7 +104,7 @@ class Footer extends Component {
         a.href = url;
         a.target = "_blank";
         a.click();
-    }
+    };
 
     render() {
         const { showDocuments } = this.state;
@@ -104,7 +112,9 @@ class Footer extends Component {
 
         return (
             <div>
-                <SupportButton onClick={this._supportTheBoys}>🤑&nbsp;Support The Boys&nbsp;🤑</SupportButton>
+                <SupportButton onClick={this._supportTheBoys}>
+                    🤑&nbsp;Support The Boys&nbsp;🤑
+                </SupportButton>
                 <ManageDocumentButton
                     onClick={() =>
                         this.setState({ showDocuments: !showDocuments })
@@ -115,16 +125,28 @@ class Footer extends Component {
                 <SaveDocumentButton onClick={onSaveDocument}>
                     💾&nbsp;Save Document
                 </SaveDocumentButton>
+                <Link to="/moonshot">
+                    <MoonshotButton onClick={onSaveDocument}>
+                        🌚&nbsp;m00n$hOt
+                    </MoonshotButton>
+                </Link>
                 {showDocuments && (
                     <ModalWrapper>
                         <ModalOverlay />
                         <ModalContent>
-                          <Header>
-                            <h3>Saved Documents</h3>
-                            <ExitButton onClick={() =>
-                                this.setState({ showDocuments: !showDocuments })
-                            }> Close </ExitButton>
-                          </Header>
+                            <Header>
+                                <h3>Saved Documents</h3>
+                                <ExitButton
+                                    onClick={() =>
+                                        this.setState({
+                                            showDocuments: !showDocuments
+                                        })
+                                    }
+                                >
+                                    {" "}
+                                    Close{" "}
+                                </ExitButton>
+                            </Header>
                             <DocumentManager
                                 onChangeDocument={this._onChangeDocument}
                             />
