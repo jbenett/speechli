@@ -48,7 +48,7 @@ const BodyContentEditable = styled(ContentEditable)`
 `;
 
 const EditorContenteditableWrapper = styled.div`
-    width: 40%;
+    width: 60%;
     height: 80%;
     display: inline;
     overflow: scroll;
@@ -112,21 +112,26 @@ export default class Editor extends Component {
                 html = html.replace(chunk, "");
             }
         });
-        html = html.replace("<br>", ".\n").replace("..", ".").replace("?.", "?").replace(" .", ".").replace("\n.\n", "\n\n");
+        html = html
+            .replace("<br>", ".\n")
+            .replace("..", ".")
+            .replace("?.", "?")
+            .replace(" .", ".")
+            .replace("\n.\n", "\n\n");
         return html;
     };
 
-     _onPaste = (e) => {
+    _onPaste = e => {
         var clipboardData, pastedData;
 
         e.stopPropagation();
         e.preventDefault();
 
         clipboardData = e.clipboardData || window.clipboardData;
-        pastedData = clipboardData.getData('Text');
+        pastedData = clipboardData.getData("Text");
 
-        this.props.setText(pastedData)
-    }
+        this.props.setText(pastedData);
+    };
 
     _onChangeTitle = e => {
         this.props.setTitle(e.target.value);
@@ -147,7 +152,6 @@ export default class Editor extends Component {
     _onBlurBody = e => {
         this.props.setEditorFocus(false);
     };
-
 
     render() {
         const { title, tagButtonValues, activeTag, onTagChange } = this.props;
@@ -182,7 +186,7 @@ export default class Editor extends Component {
                         onFocus={this._onFocusBody}
                         onBlur={this._onBlurBody}
                         onChange={this._onChangeBody}
-                        onPaste ={this._onPaste}
+                        onPaste={this._onPaste}
                     />
                 </EditorContenteditableWrapper>
             </EditorWrapper>

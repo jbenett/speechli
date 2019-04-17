@@ -127,7 +127,7 @@ class Footer extends Component {
                 </SaveDocumentButton>
                 <Link to="/moonshot">
                     <MoonshotButton onClick={onSaveDocument}>
-                        🌚&nbsp;m00n$hOt
+                        🌚&nbsp;Moonshot
                     </MoonshotButton>
                 </Link>
                 {showDocuments && (
