@@ -3,8 +3,16 @@ import PropTypes from "prop-types";
 import Select from "react-select";
 import styled from "styled-components";
 
+import Button from "./Button";
+
 const SelectWrapper = styled.div`
     padding: 1rem;
+`;
+
+const ConvertButton = styled(Button)`
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
 `;
 
 export default class MoonshotSidebar extends Component {
@@ -19,7 +27,7 @@ export default class MoonshotSidebar extends Component {
 
     render() {
         return (
-            <div className={ "sidebar-container sidebar-displayed" }>
+            <div className="sidebar-container sidebar-displayed">
                 <SelectWrapper>
                     <Select
                         value={this.props.selectedAuthorOptions}
@@ -27,10 +35,10 @@ export default class MoonshotSidebar extends Component {
                         options={this.props.authorOptions}
                         isMulti={true}
                     />
+                    <ConvertButton onClick={this.props.onButtonPress}>
+                        Convert Document
+                    </ConvertButton>
                 </SelectWrapper>
-                <button type="button" onClick={this.props.onButtonPress}>
-                    Moonshot button
-                </button>
             </div>
         );
     }

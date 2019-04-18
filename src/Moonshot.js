@@ -54,7 +54,7 @@ class Moonshot extends Component {
   }
 
   _toggleSidebar = (force = null) => {
-  	// Do nothing, we're never hiding the sidebar
+    // Do nothing, we're never hiding the sidebar
   };
 
   _toggleLoader = (displayLoader = false) => {
@@ -62,24 +62,24 @@ class Moonshot extends Component {
   };
 
   _onChangeText = newText => {
-  	this.setState({ text: newText });
+    this.setState({ text: newText });
     // Do nothing, we have no auto query
   };
 
   _onButtonPress = () => {
-  	console.log("On button press function called");
-  	this._toggleLoader(true);
-  	console.log("Text before moonshot query: ", this.state.text);
-  	const content = new ContentHandler(this.state.text);  	
-  	const authors = this.state.selectedAuthorOptions.map(obj => obj.value);
-    content.moonshotQuery(authors, (sentenceMap) => {
-    	let updatedText = this.state.text;
-    	console.log("Text upon moonshot query: ", updatedText);
-    	for (let oldText of Object.keys(sentenceMap)) {
-    		updatedText = updatedText.replace(oldText, sentenceMap[oldText]);
-    	}
+    console.log("On button press function called");
+    this._toggleLoader(true);
+    console.log("Text before moonshot query: ", this.state.text);
+    const content = new ContentHandler(this.state.text);
+    const authors = this.state.selectedAuthorOptions.map(obj => obj.value);
+    content.moonshotQuery(authors, sentenceMap => {
+      let updatedText = this.state.text;
+      console.log("Text upon moonshot query: ", updatedText);
+      for (let oldText of Object.keys(sentenceMap)) {
+        updatedText = updatedText.replace(oldText, sentenceMap[oldText]);
+      }
       this.setState({
-        text: updatedText      
+        text: updatedText
       });
       this._toggleLoader(false);
     });
@@ -129,8 +129,7 @@ class Moonshot extends Component {
 
     return (
       <ThemeProvider theme={theme}>
-        <div className="Moonshot
-       ">
+        <div className="Moonshot App">
           <Header />
           <Editor
             setText={this._onChangeText}
