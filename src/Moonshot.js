@@ -67,21 +67,16 @@ class Moonshot extends Component {
   };
 
   _onButtonPress = () => {
-    console.log("On button press function called");
     this._toggleLoader(true);
-    console.log("Text before moonshot query: ", this.state.text);
     const content = new ContentHandler(this.state.text);
     const authors = this.state.selectedAuthorOptions.map(obj => obj.value);
     content.moonshotQuery(authors, sentenceMap => {
       let updatedText = this.state.text;
-      console.log("Text upon moonshot query: ", updatedText);
       for (let oldText of Object.keys(sentenceMap)) {
-        updatedText = updatedText.replace(oldText, sentenceMap[oldText]);
+        updatedText = updatedText.replace(oldText, sentenceMap[oldText].trim());
       }
-      this.setState({
-        text: updatedText
-      });
-      this._toggleLoader(false);
+      this.setState({ text: updatedText });
+      // this._toggleLoader(false);
     });
   };
 
