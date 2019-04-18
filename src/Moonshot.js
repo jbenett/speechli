@@ -76,7 +76,7 @@ class Moonshot extends Component {
         updatedText = updatedText.replace(oldText, sentenceMap[oldText].trim());
       }
       this.setState({ text: updatedText });
-      // this._toggleLoader(false);
+      this._toggleLoader(false);
     });
   };
 
