@@ -25,7 +25,7 @@ export default class ContentHandler {
 		this.sentences = {};
 		this.suggestions = [];
 
-		text.split(/[.?!]/).forEach(sentence => {
+		text.split(/[.?!\n]/).forEach(sentence => {
 			var cleanedSentence = sentence.trim(); // Got rid of lowercase to be able to perform replace function easier
 			if (cleanedSentence) {
 				this.sentences[cleanedSentence] =
