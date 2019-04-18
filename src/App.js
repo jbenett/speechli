@@ -163,12 +163,13 @@ class App extends Component {
     );
     content.hardResetSuggestions();
     this.setState(
-      { 
-        selectedAuthorOptions, 
+      {
+        selectedAuthorOptions,
         sentences: content.sentences,
         suggestions: content.suggestions,
-        displaySidebar: content.suggestions.length > 0 
-      }, () => {
+        displaySidebar: content.suggestions.length > 0
+      },
+      () => {
         this._debouncedQuery(content);
       }
     );
@@ -182,12 +183,13 @@ class App extends Component {
     );
     content.hardResetSuggestions();
     this.setState(
-      { 
-        activeTag, 
+      {
+        activeTag,
         sentences: content.sentences,
         suggestions: content.suggestions,
-        displaySidebar: content.suggestions.length > 0 
-      }, () => {
+        displaySidebar: content.suggestions.length > 0
+      },
+      () => {
         this._debouncedQuery(content);
       }
     );

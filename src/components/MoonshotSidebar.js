@@ -26,6 +26,7 @@ export default class MoonshotSidebar extends Component {
     };
 
     render() {
+        const { loading } = this.props;
         return (
             <div className="sidebar-container sidebar-displayed">
                 <SelectWrapper>
@@ -38,6 +39,7 @@ export default class MoonshotSidebar extends Component {
                     <ConvertButton onClick={this.props.onButtonPress}>
                         Convert Document
                     </ConvertButton>
+                    {loading && <div className="loader" />}
                 </SelectWrapper>
             </div>
         );
