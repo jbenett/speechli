@@ -126,7 +126,7 @@ class App extends Component {
     let newText = this.state.text;
     const suggestion = this.state.suggestions.find(sug => sug.id == id);
     if (suggestion) {
-      newText = newText.replace(suggestion.source, suggestion.text); // Currently only replaces one occurrence
+      newText = newText.replace(suggestion.source, suggestion.text.trim()); // Currently only replaces one occurrence
     }
     const content = new ContentHandler(
       newText,
