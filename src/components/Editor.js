@@ -166,6 +166,18 @@ export default class Editor extends Component {
                         onChange={this._onChangeTitle}
                         placeholder="My Lovely Title"
                     />
+                    <TagButtonGroup>
+                        {tagButtonValues.map(({ value, props }, index) => {
+                            return (
+                                <TagButton
+                                    active={value === activeTag}
+                                    key={value}
+                                    onClick={() => onTagChange(value)}
+                                    {...props}
+                                />
+                            );
+                        })}
+                    </TagButtonGroup>
                     <BodyContentEditable
                         className="EditorContenteditable__Body"
                         tagName="pre"
